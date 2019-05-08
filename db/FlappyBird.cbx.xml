@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="FlappyBird">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Ball1|Clock_Divider:inst|altpll:altpll_component" CBX_FILE_NAME="Clock_Divider_altpll.v"/>
+	</PROJECT>
+</LOG_ROOT>
