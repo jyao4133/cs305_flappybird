@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="FlappyBird">
-		<CBX_INST_ENTRY INSTANCE_NAME="|Ball1|Clock_Divider:inst|altpll:altpll_component" CBX_FILE_NAME="Clock_Divider_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Colour|Clock_Divider:inst|altpll:altpll_component" CBX_FILE_NAME="Clock_Divider_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Colour|char_rom:inst12|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_kt91.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

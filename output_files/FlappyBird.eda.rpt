@@ -1,5 +1,5 @@
 EDA Netlist Writer report for FlappyBird
-Thu May 02 15:58:44 2019
+Thu May 09 19:10:51 2019
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -36,9 +36,9 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu May 02 15:58:44 2019 ;
+; EDA Netlist Writer Status ; Successful - Thu May 09 19:10:51 2019 ;
 ; Revision Name             ; FlappyBird                            ;
-; Top-level Entity Name     ; Ball1                                 ;
+; Top-level Entity Name     ; Colour                                ;
 ; Family                    ; Cyclone III                           ;
 ; Simulation Files Creation ; Successful                            ;
 +---------------------------+---------------------------------------+
@@ -88,7 +88,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Thu May 02 15:58:43 2019
+    Info: Processing started: Thu May 09 19:10:50 2019
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off FlappyBird -c FlappyBird
 Info (204019): Generated file FlappyBird_6_1200mv_85c_slow.vho in folder "D:/305_11thApril/simulation/modelsim/" for EDA simulation tool
 Info (204019): Generated file FlappyBird_6_1200mv_0c_slow.vho in folder "D:/305_11thApril/simulation/modelsim/" for EDA simulation tool
@@ -100,7 +100,7 @@ Info (204019): Generated file FlappyBird_min_1200mv_0c_vhd_fast.sdo in folder "D
 Info (204019): Generated file FlappyBird_vhd.sdo in folder "D:/305_11thApril/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 465 megabytes
-    Info: Processing ended: Thu May 02 15:58:44 2019
+    Info: Processing ended: Thu May 09 19:10:51 2019
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
