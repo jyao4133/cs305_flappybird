@@ -26,33 +26,13 @@ begin
 	BEGIN
 	if ((pixel_rows >= (size * 0) and pixel_rows < (size * 1) and pixel_cols >= (size * 0) and pixel_cols < (size *1))) then
 		character_add <= "010011";
---	character_add <= 
---	"010011" when (pixel_row >= (size * 0) and pixel_row < (size * 1) and pixel_column >= (size * 0) and pixel_col < (size *1)) else 
-----	"000011" when (pixel_row >= (size * 0) and pixel_row < (size * 1) and pixel_column >= (size * 1) and pixel_col < (size *2)) else
-----	"001111" when (pixel_row >= (size * 0) and pixel_row < (size * 1) and pixel_column >= (size * 2) and pixel_col < (size *3)) else
-----	"010010" when (pixel_row >= (size * 0) and pixel_row < (size * 1) and pixel_column >= (size * 3) and pixel_col < (size *4)) else
-----	"000101" when (pixel_row >= (size * 0) and pixel_row < (size * 1) and pixel_column >= (size * 4) and pixel_col < (size *5))
---	"100000";
-
+		Text_on<='1';
+	else
+		Text_on<='0';-- if we do this ball goes away and whole screen has red background
 	end if;
 
 
-	--			
---		IF (pixel_row<=text_location) THEN --hardcoded to 
---				-- compare positive numbers only
-----			Text_on <= '1';
-----			
-----			r_ball<='1';
-----			
-----			g_ball<='1';
-----			b_ball<='1';
---		ELSE
-----			Text_on <= '0';
-----			r_ball<='0';
-----			g_ball<='1';
-----			b_ball<='0';
---		END IF;
-
+	
 		
 	end process;
 

@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP3C16F484) Path("D:/305_11thApril/output_files/") File("FlappyBird.sof") MfrSpec(OpMask(1));
+		Device PartName(EP3C16F484) Path("D:/cs305_flappybird/output_files/") File("FlappyBird.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

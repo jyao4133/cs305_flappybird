@@ -1,0 +1,65 @@
+entity binary_to_bcd is 
+
+port (
+
+           data : in  STD_LOGIC_VECTOR (9 downto 0);
+           ones : out  STD_LOGIC_VECTOR (3 downto 0);
+           tens : out  STD_LOGIC_VECTOR (3 downto 0);
+           hundreds : out  STD_LOGIC_VECTOR (3 downto 0)
+			  
+		);
+end entity;
+
+architecture rtl of binary_to_bcd is 
+
+begin 
+
+	process(data)
+		--Create a register to store the bcd values 
+		variable bcd_register : unsigned (11 downto 0) ;
+		--Create a register for temp data 
+		variable temp         : STD_LOGIC_VECTOR (7 downto 0);
+		
+		
+		begin 
+			--set all default values in reg to 0
+			bcd_register :=  "000000000000";
+			--transfer data into temp registor
+			temp := data (7 downto 0); 
+		
+		--Iterate until all 8 bits are shifted 
+		--Double Dabble algorithm
+		
+		for loop_num in 0 to 7 loop
+			
+			
+			if bcd_register(11 downto 8) > "0100" then
+					
+				bcd_register(11 downto 8) := bcd_register(11 downto 8) +  "0011";
+				
+			end if;
+			
+			if bcd_register(7 downto 4) > "0100"  then
+					
+				bcd_register(7 downto 4) := bcd_register(7 downto 4) + "0011";
+				
+			end if;
+			
+			if bcd_register(3 downto 0) > "0100"  then
+					
+				bcd_register(3 downto 0) := bcd_register(3 downto 0) + "0011";
+				
+			end if;		
+			
+		bcd_register := bcd_register(10 downto 0) & temp(7);
+		
+		temp := temp(6 downto 0) & '0';
+		
+		end loop;
+			
+		 ones <=  STD_LOGIC_VECTOR(bcd_register (3 downto 0));
+		 tens <=  STD_LOGIC_VECTOR(bcd_register (7 downto 4));
+		 hundreds <=  STD_LOGIC_VECTOR(bcd_register (11 downto 8));
+		
+	end process;
+end rtl; 
