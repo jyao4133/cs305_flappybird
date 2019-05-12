@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 152 192)
+	(rect 16 16 152 256)
 	(text "render_mux" (rect 5 0 54 12)(font "Arial" ))
-	(text "inst" (rect 8 160 20 172)(font "Arial" ))
+	(text "inst" (rect 8 224 20 236)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -80,6 +80,34 @@ applicable agreement for further details.
 		(line (pt 0 144)(pt 16 144)(line_width 1))
 	)
 	(port
+		(pt 0 160)
+		(input)
+		(text "r_pipe" (rect 0 0 24 12)(font "Arial" ))
+		(text "r_pipe" (rect 21 155 45 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 1))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "g_pipe" (rect 0 0 25 12)(font "Arial" ))
+		(text "g_pipe" (rect 21 171 46 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "b_pipe" (rect 0 0 25 12)(font "Arial" ))
+		(text "b_pipe" (rect 21 187 46 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 1))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "pipe_on" (rect 0 0 30 12)(font "Arial" ))
+		(text "pipe_on" (rect 21 203 51 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208)(line_width 1))
+	)
+	(port
 		(pt 136 32)
 		(output)
 		(text "r" (rect 0 0 3 12)(font "Arial" ))
@@ -101,6 +129,6 @@ applicable agreement for further details.
 		(line (pt 136 64)(pt 120 64)(line_width 1))
 	)
 	(drawing
-		(rectangle (rect 16 16 120 160)(line_width 1))
+		(rectangle (rect 16 16 120 224)(line_width 1))
 	)
 )

@@ -1,5 +1,5 @@
 Assembler report for FlappyBird
-Sat May 11 18:14:40 2019
+Sun May 12 17:43:51 2019
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sat May 11 18:14:40 2019 ;
+; Assembler Status      ; Successful - Sun May 12 17:43:51 2019 ;
 ; Revision Name         ; FlappyBird                            ;
 ; Top-level Entity Name ; Colour                                ;
 ; Family                ; Cyclone III                           ;
@@ -92,8 +92,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                  ;
 +----------------+----------------------------------------------------------+
 ; Device         ; EP3C16F484C6                                             ;
-; JTAG usercode  ; 0x000EFBD6                                               ;
-; Checksum       ; 0x000EFBD6                                               ;
+; JTAG usercode  ; 0x000F5D67                                               ;
+; Checksum       ; 0x000F5D67                                               ;
 +----------------+----------------------------------------------------------+
 
 
@@ -103,13 +103,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Sat May 11 18:14:38 2019
+    Info: Processing started: Sun May 12 17:43:49 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off FlappyBird -c FlappyBird
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 484 megabytes
-    Info: Processing ended: Sat May 11 18:14:40 2019
+    Info: Peak virtual memory: 488 megabytes
+    Info: Processing ended: Sun May 12 17:43:51 2019
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
