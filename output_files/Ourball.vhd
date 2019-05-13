@@ -72,7 +72,7 @@ BEGIN
 							Left_Click_Motion <= - CONV_STD_LOGIC_VECTOR(0,10);
 					END IF;
 					--minusing size twice to make sure all of the ball stays in screen
-					if (('0' & Ball_Y_pos) <=  (CONV_STD_LOGIC_VECTOR(480,10) - Size - Size)) THEN
+					if (('0' & Ball_Y_pos) <=  (bottom_boundary - Size - Size)) THEN
 						Gravity_Motion <= CONV_STD_LOGIC_VECTOR(4,10);
 					-- Compute next ball Y position
 					else

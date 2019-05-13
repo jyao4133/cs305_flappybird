@@ -1,0 +1,38 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.all;
+USE IEEE.STD_LOGIC_ARITH.all;
+USE IEEE.STD_LOGIC_SIGNED.all;
+LIBRARY work;
+USE work.de0core.all;
+entity MouseREG is
+	port (
+
+				  mouse_in :in std_logic;
+				  mouse_out:out std_logic
+				  
+			);
+end entity;
+
+architecture behavior of MouseREG is 
+
+begin
+	process(mouse_in)
+		variable Pressed  : std_logic;
+		variable Released : std_logic;
+		begin 
+			if(mouse_in='1') then 
+				Pressed :='1'; 
+			end;
+			
+				
+			if (pressed='1') then
+				if mouse_in='0' then 
+					mouse_out <='0';
+					Pressed:='0';
+				end if;
+			end if;
+	end process;
+end architecture behavior;	
+				
+				
+			

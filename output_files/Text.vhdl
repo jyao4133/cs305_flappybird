@@ -24,11 +24,23 @@ begin
 
 	RGB_Display_Text: Process ( pixel_column, pixel_row)
 	BEGIN
-	if ((pixel_rows >= (size * 0) and pixel_rows < (size * 1) and pixel_cols >= (size * 0) and pixel_cols < (size *1))) then
-		character_add <= "010011";
+	if ((pixel_rows >= (size * 0) and pixel_rows < (size * 1)) and pixel_cols < (size *5)) then
+		if (pixel_cols >= (size * 0) and pixel_cols < (size *1)) then
+			character_add <= "010011";
+		elsif (pixel_cols >= (size * 1) and pixel_cols < (size *2)) then
+			character_add <= "000000";
+		elsif (pixel_cols >= (size * 2) and pixel_cols < (size *3)) then
+			character_add <= "001111";
+		elsif (pixel_cols >= (size * 3) and pixel_cols < (size *4)) then
+			character_add <= "010010";
+		elsif (pixel_cols >= (size * 4) and pixel_cols < (size *5)) then
+			character_add <= "000101";		
+		end if;
+
 		Text_on<='1';
+		
 	else
-		Text_on<='0';-- if we do this ball goes away and whole screen has red background
+		Text_on<='0';
 	end if;
 
 
