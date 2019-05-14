@@ -27,9 +27,9 @@ begin
 			g<=g_pipe;
 			b<=b_pipe;
 		else -- if nothing just show black 
-			r<='0';
-			g<='0';
-			b<='0';
+			r<='1';
+			g<='1';
+			b<='1';
 		end if;
 		
 	end process;

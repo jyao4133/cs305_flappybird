@@ -1,0 +1,23 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.all;
+USE  IEEE.STD_LOGIC_UNSIGNED.all;
+USE IEEE.numeric_std.all;
+LIBRARY lpm;
+USE lpm.lpm_components.ALL;
+
+entity LFSR is 
+	port ( 
+		top_pipe, bottom_pipe : in std_logic_vector(9 downto 0); 
+		clk : in std_logic;
+		new_top_pipe, new_bottom_pipe : out std_logic_vector(9 downto 0);
+	);
+end entity;
+
+architecture behavior of LFSR is 
+	begin
+		
+	
+	
+	
+	
+end architecture behavior;	

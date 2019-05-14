@@ -29,15 +29,15 @@ architecture behavior of ourball is
 	
 	Constant bottom_boundary									   : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(480,10);
 	--hardcoded size in there which is 8
-	Constant top_boundary										   : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(8,10);
+	Signal top_boundary										   : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(8,10);
 	Constant Size													   : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(8,10);	
 
 BEGIN 
 	-- Colors for pixel data on video signal
-	Red <=  '1';
+	Red <=  Ball_on;
 	-- Turn off Green and Blue when displaying ball
-	Green <= NOT Ball_on;
-	Blue <=  NOT Ball_on;
+	Green <= '0';
+	Blue <=  '0';
 
 	RGB_Display_Ball: Process (Ball_X_pos, Ball_Y_pos, pixel_column, pixel_row)
 	BEGIN
