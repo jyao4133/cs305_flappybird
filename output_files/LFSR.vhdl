@@ -14,22 +14,25 @@ entity LFSR is
 end entity;
 
 architecture behavior of LFSR is 
+	signal linear_feedback :std_logic;
+   signal count           :std_logic_vector (9 downto 0);
+
 	begin
+	   linear_feedback <= not(count(6) xor count(3) xor count(4));
+
 		process(clk)
-		variable temp : std_logic_vector(9 downto 0):="0001100100"; 
 			begin
-				if(rising_edge(clk))then
-					temp(0):=temp(9);
-					temp(1):=temp(0);
-					temp(2):=temp(1)xor temp(9);
-					temp(3):=temp(2);
-					temp(4):=temp(3);
-					temp(5):=temp(4);
-					temp(6):=temp(5);
-					temp(7):=temp(6);
-					temp(8):=temp(7)xor temp(9);
-					temp(9):=temp(8);
-				end if;
-			new_top_pipe<=temp;
+			if (rising_edge(clk))then
+                count <= (count(8) &count(7) &count(6) & count(5) & count(4) & count(3) 
+                          & count(2) & count(1) & count(0) & 
+                          linear_feedback);
+								  
+			end if;
+			
+			
+
 		end process;
+		
+		new_top_pipe<=count;
+
 end architecture behavior;	
