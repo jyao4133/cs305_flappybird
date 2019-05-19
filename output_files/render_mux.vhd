@@ -4,8 +4,12 @@ use ieee.std_logic_unsigned.all;
 --This is a priority mux which chooses the configuration of loading elements on the vga screen
 --Inputs: RGB Values from each relement and Enable Signal from each element
 entity render_mux is
-	port (r_ball,g_ball,b_ball,r_text,g_text,b_text,ball_on,text_on,r_pipe,g_pipe,b_pipe,pipe_on: in std_logic;
-			r,g,b: out std_logic);
+	port (r_ball,g_ball,b_ball : in std_logic_vector(3 downto 0);
+	r_text,g_text,b_text			: in std_logic_vector(3 downto 0);
+	r_pipe,g_pipe,b_pipe			: in std_logic_vector(3 downto 0);
+	ball_on,text_on,pipe_on,collide		: in std_logic;
+	sw1: out std_logic;
+			r,g,b: out std_logic_vector(3 downto 0));
 end render_mux;
 
 Architecture render of render_mux is
@@ -27,9 +31,16 @@ begin
 			g<=g_pipe;
 			b<=b_pipe;
 		else -- if nothing just show black 
-			r<='1';
-			g<='1';
-			b<='1';
+			r<="1111";
+			g<="1111";
+			b<="1111";
+		end if;
+		
+		
+		if(collide = '1') then
+			sw1<='1';
+		else
+			sw1<='0';
 		end if;
 		
 	end process;

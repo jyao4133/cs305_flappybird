@@ -13,9 +13,10 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 
    PORT(SIGNAL left_click, Clock , vert_sync_int: IN std_logic;
 		  Signal  pixel_column, pixel_row :in std_logic_vector(9 downto 0);
-        SIGNAL Red,Green,Blue,ball_signal 			: OUT std_logic;
+        SIGNAL Red,Green,Blue : OUT std_logic_vector(3 downto 0);
+		  Signal ball_signal 			: OUT std_logic;
         SIGNAL Horiz_sync,Vert_sync		: OUT std_logic;
-		  Signal ball_X,ball_Y : Out  std_logic_vector(9 DOWNTO 0));
+		  Signal ball_X,ball_Y, ball_size : Out  std_logic_vector(9 DOWNTO 0));
 END ourball;
 
 architecture behavior of ourball is
@@ -34,13 +35,16 @@ architecture behavior of ourball is
 
 BEGIN 
 	-- Colors for pixel data on video signal
-	Red <=  Ball_on;
-	-- Turn off Green and Blue when displaying ball
-	Green <= '0';
-	Blue <=  '0';
+
 
 	RGB_Display_Ball: Process (Ball_X_pos, Ball_Y_pos, pixel_column, pixel_row)
 	BEGIN
+	if (ball_on = '1') then
+		Red <=  "1111";
+	end if;
+	-- Turn off Green and Blue when displaying ball
+	Green <= "0000";
+	Blue <=  "0000";
 		-- Set Ball_on ='1' to display ball
 		IF ('0' & Ball_X_pos <= pixel_column + Size) AND
 		-- only display ball if it is inside screen ?
@@ -89,5 +93,6 @@ BEGIN
 	--output the x,y pos of ball x pos might be used for horz movement of ball undecided mechanic
 	ball_X<=ball_X_pos;
 	ball_Y<= ball_Y_pos;
+	ball_size <= size;
 END behavior;
 

@@ -12,9 +12,11 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
    PORT( Clock , vert_sync_int,Switch: IN std_logic;
 		  Signal  pixel_row,LFSR_input :in std_logic_vector(9 downto 0);
 		  Signal pixel_column : in std_logic_vector(10 downto 0);
-        SIGNAL Red,Green,Blue,pipe_enable 			: OUT std_logic;
-        SIGNAL Horiz_sync,Vert_sync		: OUT std_logic;
-		  Signal Pipe_y,Pipe_x : Out  unsigned(9 DOWNTO 0));
+        SIGNAL Red,Green,Blue 			: OUT std_logic_vector(3 downto 0);
+        SIGNAL pipe_enable,	Horiz_sync,Vert_sync	: OUT std_logic;
+		  Signal Pipe_y : Out  std_logic_vector(9 DOWNTO 0);
+		  Signal Pipe_x : Out  std_logic_vector(10 DOWNTO 0);
+		  Signal Pipe_xsize, Pipe_ysize : out std_logic_vector(9 DOWNTO 0));
 END pipe;
 
 architecture behavior of pipe is
@@ -61,10 +63,12 @@ BEGIN
 		Pipe_on<='0';
 		pipe_enable<='0';
   end if;
-	Red <=  '0';
+	Red <=  "0000";
 	-- Turn off Red and Blue when displaying pipe
-	Green <= pipe_on;
-	Blue <=  '0';
+	if(pipe_on='1') then
+		Green <= "1111";
+	end if;	
+	Blue <=  "0000";
 	
 
 END process RGB_Display_pipe;
@@ -75,35 +79,40 @@ BEGIN
 
 	WAIT UNTIL vert_sync_int'event and vert_sync_int = '1';
 		--at the moment this just makes the pipe move from 640 to 0 and then restarts at 640	
-		if (('0' & Pipe_x_pos) >=  Size)THEN
-				
-				X_Motion <= -CONV_STD_LOGIC_VECTOR(5,10);
-				
-				Pipe_X_pos <= Pipe_X_Pos + X_Motion;
-				
-				
-				bottom_boundary <= top_boundary + CONV_STD_LOGIC_VECTOR(32,  10);
+		if (switch ='1') then
+			if (('0' & Pipe_x_pos) >=  Size)THEN
+					
+					X_Motion <= -CONV_STD_LOGIC_VECTOR(2,10);
+					
+					Pipe_X_pos <= Pipe_X_Pos + X_Motion;
+					
+					
+					bottom_boundary <= top_boundary + CONV_STD_LOGIC_VECTOR(32,  10);
 
 
-		else	
-		
-				Pipe_x_Pos <= "01111111000";
-				
+			else	
+			
+					Pipe_x_Pos <= "01111111000";
+					
 
-				top_boundary <= lfsr_input;
-				top_boundary(9) <= '0';
-				top_boundary(8) <= '0';
-				top_boundary(1) <= '1';
+					top_boundary <= lfsr_input;
+					top_boundary(9) <= '0';
+					top_boundary(8) <= '0';
+					top_boundary(1) <= '1';
 
-				if (top_boundary > CONV_STD_LOGIC_VECTOR(430,  10) )then
-					top_boundary <=  CONV_STD_LOGIC_VECTOR(20,  10);
-				end if;
-		END IF;
+					if (top_boundary > CONV_STD_LOGIC_VECTOR(430,  10) )then
+						top_boundary <=  CONV_STD_LOGIC_VECTOR(20,  10);
+					end if;
+			END IF;
+		end if;
 
 END process Move_Pipe;
 --
---Pipe_x<=unsigned(Pipe_X_Pos);
---Pipe_Y<= unsigned(Pipe_Y_pos);
+Pipe_x<=Pipe_X_Pos;
+Pipe_Y<=top_boundary;
+Pipe_xsize <= size;
+--the gap between pipes
+Pipe_ysize <= top_boundary - bottom_boundary;
 END behavior ;
 
 

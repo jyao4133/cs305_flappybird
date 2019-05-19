@@ -9,7 +9,8 @@ USE lpm.lpm_components.ALL;
 entity Text is 
 	port(
 	pixel_row,pixel_column: in Std_logic_vector(9 downto 0);
-	r_ball,g_ball,b_ball,Text_on :out Std_LOGIC;
+	r_ball,g_ball,b_ball :out Std_LOGIC_vector(3 downto 0);
+	Text_on : out Std_logic;
 	character_add : out Std_logic_vector(5 downto 0));
 end entity;
 
