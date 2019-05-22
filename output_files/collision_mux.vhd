@@ -7,25 +7,26 @@ entity collision_mux is
 	port ( 
 	
 		pipe_x : in std_logic_vector(10 downto 0);
-		pipe_y : in std_logic_vector(9 downto 0);
-		pipe_size : in std_logic_vector(9 downto 0);
-		pipe_gap : in std_logic_vector(9 downto 0);
-		ball_x : in std_logic_vector(9 downto 0);
-		ball_y : in std_logic_vector(9 downto 0);
-		ball_size : in std_logic_vector(9 downto 0);
+		pipe_y : in std_logic_vector(10 downto 0);
+		pipe_size : in std_logic_vector(10 downto 0);
+		pipe_gap : in std_logic_vector(10 downto 0);
+		ball_x : in std_logic_vector(10 downto 0);
+		ball_y : in std_logic_vector(10 downto 0);
+		ball_size : in std_logic_vector(10 downto 0);
 		collision_on : out std_logic;
 		clk : in std_logic;
-		vert_sync: in std_logic);
+		vert_sync: in std_logic;
+		pixel_row,pixel_col : in std_logic_vector(10 downto 0));
 		
 end collision_mux;
 
 Architecture render of collision_mux is
 begin	
 
-	process(pipe_x,pipe_y,ball_x,ball_y,pipe_size,ball_size, clk,vert_sync)
+	process(pixel_col,pixel_row,clk, vert_sync)
 		begin
 			
-		 --if(rising_edge(clk))then
+		-- if(rising_edge(clk))then
 			if(vert_sync'event and vert_sync='1') then
 				--Checking if the ball top right corner intersects the pipe left side area
 				if ((((ball_x) + ball_size >= pipe_x) OR 
@@ -48,10 +49,10 @@ begin
 					
 					
 				end if;
-			end if;		
+		--end if;		
 
 		
-		--end if;
+		end if;
 
 	end process;
 end architecture render;

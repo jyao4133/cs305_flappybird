@@ -89,8 +89,8 @@ applicable agreement for further details.
 	(port
 		(pt 224 112)
 		(output)
-		(text "pixel_row[9..0]" (rect 0 0 56 12)(font "Arial" ))
-		(text "pixel_row[9..0]" (rect 147 107 203 119)(font "Arial" ))
+		(text "pixel_row[10..0]" (rect 0 0 60 12)(font "Arial" ))
+		(text "pixel_row[10..0]" (rect 143 107 203 119)(font "Arial" ))
 		(line (pt 224 112)(pt 208 112)(line_width 3))
 	)
 	(port

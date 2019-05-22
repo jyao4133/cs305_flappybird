@@ -47,15 +47,15 @@ applicable agreement for further details.
 	(port
 		(pt 0 80)
 		(input)
-		(text "pixel_row[9..0]" (rect 0 0 56 12)(font "Arial" ))
-		(text "pixel_row[9..0]" (rect 21 75 77 87)(font "Arial" ))
+		(text "pixel_row[10..0]" (rect 0 0 60 12)(font "Arial" ))
+		(text "pixel_row[10..0]" (rect 21 75 81 87)(font "Arial" ))
 		(line (pt 0 80)(pt 16 80)(line_width 3))
 	)
 	(port
 		(pt 0 96)
 		(input)
-		(text "LFSR_input[9..0]" (rect 0 0 69 12)(font "Arial" ))
-		(text "LFSR_input[9..0]" (rect 21 91 90 103)(font "Arial" ))
+		(text "LFSR_input[10..0]" (rect 0 0 73 12)(font "Arial" ))
+		(text "LFSR_input[10..0]" (rect 21 91 94 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96)(line_width 3))
 	)
 	(port
@@ -110,8 +110,8 @@ applicable agreement for further details.
 	(port
 		(pt 240 128)
 		(output)
-		(text "Pipe_y[9..0]" (rect 0 0 48 12)(font "Arial" ))
-		(text "Pipe_y[9..0]" (rect 171 123 219 135)(font "Arial" ))
+		(text "Pipe_y[10..0]" (rect 0 0 51 12)(font "Arial" ))
+		(text "Pipe_y[10..0]" (rect 168 123 219 135)(font "Arial" ))
 		(line (pt 240 128)(pt 224 128)(line_width 3))
 	)
 	(port
@@ -124,15 +124,15 @@ applicable agreement for further details.
 	(port
 		(pt 240 160)
 		(output)
-		(text "Pipe_xsize[9..0]" (rect 0 0 61 12)(font "Arial" ))
-		(text "Pipe_xsize[9..0]" (rect 158 155 219 167)(font "Arial" ))
+		(text "Pipe_xsize[10..0]" (rect 0 0 64 12)(font "Arial" ))
+		(text "Pipe_xsize[10..0]" (rect 155 155 219 167)(font "Arial" ))
 		(line (pt 240 160)(pt 224 160)(line_width 3))
 	)
 	(port
 		(pt 240 176)
 		(output)
-		(text "Pipe_ysize[9..0]" (rect 0 0 62 12)(font "Arial" ))
-		(text "Pipe_ysize[9..0]" (rect 157 171 219 183)(font "Arial" ))
+		(text "Pipe_ysize[10..0]" (rect 0 0 66 12)(font "Arial" ))
+		(text "Pipe_ysize[10..0]" (rect 153 171 219 183)(font "Arial" ))
 		(line (pt 240 176)(pt 224 176)(line_width 3))
 	)
 	(parameter

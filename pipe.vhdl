@@ -10,13 +10,13 @@ ENTITY pipe IS
 Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 
    PORT( Clock , vert_sync_int,Switch: IN std_logic;
-		  Signal  pixel_row,LFSR_input :in std_logic_vector(9 downto 0);
+		  Signal  pixel_row,LFSR_input :in std_logic_vector(10 downto 0);
 		  Signal pixel_column : in std_logic_vector(10 downto 0);
         SIGNAL Red,Green,Blue 			: OUT std_logic_vector(3 downto 0);
         SIGNAL pipe_enable,	Horiz_sync,Vert_sync	: OUT std_logic;
-		  Signal Pipe_y : Out  std_logic_vector(9 DOWNTO 0);
+		  Signal Pipe_y : Out  std_logic_vector(10 DOWNTO 0);
 		  Signal Pipe_x : Out  std_logic_vector(10 DOWNTO 0);
-		  Signal Pipe_xsize, Pipe_ysize : out std_logic_vector(9 DOWNTO 0));
+		  Signal Pipe_xsize, Pipe_ysize : out std_logic_vector(10 DOWNTO 0));
 END pipe;
 
 architecture behavior of pipe is
@@ -24,14 +24,14 @@ architecture behavior of pipe is
 	SIGNAL Red_Data, Green_Data, Blue_Data,
 			reset, Pipe_on, Direction,spawn_flag			: std_logic;
 	--gravity motion is just the left motion for now
-	SIGNAL Pipe_X_motion,Left_Click_Motion,X_Motion 						: std_logic_vector(9 DOWNTO 0);
-	SIGNAL Pipe_Y_pos		: std_logic_vector(9 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(0,10);
+	SIGNAL Pipe_X_motion,Left_Click_Motion,X_Motion 						: std_logic_vector(10 DOWNTO 0);
+	SIGNAL Pipe_Y_pos		: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(0,11);
 	SIGNAL Pipe_X_pos		: std_logic_vector(10 DOWNTO 0):= "01010000000";
-	SIGNAL u_Ypos, u_Yspeed 			: unsigned(9 DOWNTO 0);
-	Signal bottom_boundary									: std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(460,10);
+	SIGNAL u_Ypos, u_Yspeed 			: unsigned(10 DOWNTO 0);
+	Signal bottom_boundary									: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(460,11);
 	--hardcoded size in there which is 8
-	Signal top_boundary										: std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(100,10);
-	Constant Size											      : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(10,10);	
+	Signal top_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(100,11);
+	Constant Size											      : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(10,11);	
 	
 	--keep this in case we change to unsigned
 	
@@ -53,9 +53,9 @@ BEGIN
 	--Pipe displays with width of size and inside the screen boundary
 	
 	--Determines if pipe is within the x boundaries of the screen
-	IF ('0' & Pipe_X_pos <= pixel_column + Size) AND (Pipe_X_pos + Size >= '0' & pixel_column)and 
+	IF (Pipe_X_pos <= pixel_column + Size) AND (Pipe_X_pos + Size >=pixel_column)and 
 		--Determines if pipe is within the y boundaries of the screen
-		((Pipe_Y_pos+top_boundary >= '0' & pixel_row )or(Pipe_Y_pos+bottom_boundary <= '0' & pixel_row ) ) THEN 
+		((Pipe_Y_pos+top_boundary >= pixel_row )or(Pipe_Y_pos+bottom_boundary <=  pixel_row ) ) THEN 
 		Pipe_on<='1';
 		pipe_enable<='1';
   
@@ -82,12 +82,12 @@ BEGIN
 		if (switch ='1') then
 			if (('0' & Pipe_x_pos) >=  Size)THEN
 					
-					X_Motion <= -CONV_STD_LOGIC_VECTOR(2,10);
+					X_Motion <= -CONV_STD_LOGIC_VECTOR(2,11);
 					
 					Pipe_X_pos <= Pipe_X_Pos + X_Motion;
 					
 					
-					bottom_boundary <= top_boundary + CONV_STD_LOGIC_VECTOR(32,  10);
+					bottom_boundary <= top_boundary + CONV_STD_LOGIC_VECTOR(32,  11);
 
 
 			else	
@@ -96,12 +96,13 @@ BEGIN
 					
 
 					top_boundary <= lfsr_input;
+					top_boundary(10) <= '0';
 					top_boundary(9) <= '0';
 					top_boundary(8) <= '0';
 					top_boundary(1) <= '1';
 
-					if (top_boundary > CONV_STD_LOGIC_VECTOR(430,  10) )then
-						top_boundary <=  CONV_STD_LOGIC_VECTOR(20,  10);
+					if (top_boundary > CONV_STD_LOGIC_VECTOR(430,  11) )then
+						top_boundary <=  CONV_STD_LOGIC_VECTOR(20,  11);
 					end if;
 			END IF;
 		end if;

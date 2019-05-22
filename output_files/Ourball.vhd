@@ -12,11 +12,11 @@ ENTITY ourball IS
 Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 
    PORT(SIGNAL left_click, Clock , vert_sync_int: IN std_logic;
-		  Signal  pixel_column, pixel_row :in std_logic_vector(9 downto 0);
+		  Signal  pixel_column, pixel_row :in std_logic_vector(10 downto 0);
         SIGNAL Red,Green,Blue : OUT std_logic_vector(3 downto 0);
 		  Signal ball_signal 			: OUT std_logic;
         SIGNAL Horiz_sync,Vert_sync		: OUT std_logic;
-		  Signal ball_X,ball_Y, ball_size : Out  std_logic_vector(9 DOWNTO 0));
+		  Signal ball_X,ball_Y, ball_size : Out  std_logic_vector(10 DOWNTO 0));
 END ourball;
 
 architecture behavior of ourball is
@@ -24,14 +24,14 @@ architecture behavior of ourball is
 	SIGNAL Red_Data, Green_Data, Blue_Data,
 			reset, Ball_on, Direction,spawn_flag			   : std_logic;
 	--SIGNAL Size 													   : std_logic_vector(9 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(8,10);
-	SIGNAL Ball_Y_motion,Left_Click_Motion,Gravity_Motion : std_logic_vector(9 DOWNTO 0);
-	SIGNAL Ball_Y_pos												   : std_logic_vector(9 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(240,10);
-	SIGNAL Ball_X_pos												   : std_logic_vector(9 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(320,  10);
+	SIGNAL Ball_Y_motion,Left_Click_Motion,Gravity_Motion : std_logic_vector(10 DOWNTO 0);
+	SIGNAL Ball_Y_pos												   : std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(240,11);
+	SIGNAL Ball_X_pos												   : std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(320,  11);
 	
-	Constant bottom_boundary									   : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(480,10);
+	Constant bottom_boundary									   : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(480,11);
 	--hardcoded size in there which is 8
-	Signal top_boundary										   : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(8,10);
-	Constant Size													   : std_logic_vector(9 downto 0):=CONV_STD_LOGIC_VECTOR(8,10);	
+	Signal top_boundary										   : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(8,11);
+	Constant Size													   : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(8,11);	
 
 BEGIN 
 	-- Colors for pixel data on video signal
@@ -46,11 +46,11 @@ BEGIN
 	Green <= "0000";
 	Blue <=  "0000";
 		-- Set Ball_on ='1' to display ball
-		IF ('0' & Ball_X_pos <= pixel_column + Size) AND
+		IF ( Ball_X_pos <= pixel_column + Size) AND
 		-- only display ball if it is inside screen ?
-		(Ball_X_pos + Size >= '0' & pixel_column) AND
-		('0' & Ball_Y_pos <= pixel_row + Size) AND
-		(Ball_Y_pos + Size >= '0' & pixel_row ) THEN
+		(Ball_X_pos + Size >= pixel_column) AND
+		(Ball_Y_pos <= pixel_row + Size) AND
+		(Ball_Y_pos + Size >= pixel_row ) THEN
 		
 			Ball_on <= '1';
 			ball_signal <= '1';
@@ -70,17 +70,17 @@ BEGIN
 			 --Dont really need spawn flag I think - For Jason ?
 			 IF(spawn_flag = '0') then
 					-- Bounce off top or bottom of screen 40 has been hardcoded as top boundary can use constant for it later 
-					If(left_click = '1' and (('0' & Ball_Y_pos) >=  CONV_STD_LOGIC_VECTOR(40,10)) ) then
-							Left_Click_Motion <= - CONV_STD_LOGIC_VECTOR(15,10);
+					If(left_click = '1' and ((Ball_Y_pos) >=  CONV_STD_LOGIC_VECTOR(40,11)) ) then
+							Left_Click_Motion <= - CONV_STD_LOGIC_VECTOR(15,11);
 					else 
-							Left_Click_Motion <= - CONV_STD_LOGIC_VECTOR(0,10);
+							Left_Click_Motion <= - CONV_STD_LOGIC_VECTOR(0,11);
 					END IF;
 					--minusing size twice to make sure all of the ball stays in screen
-					if (('0' & Ball_Y_pos) <=  (CONV_STD_LOGIC_VECTOR(480,10) - Size - Size)) THEN
-						Gravity_Motion <= CONV_STD_LOGIC_VECTOR(4,10);
+					if (('0' & Ball_Y_pos) <=  (CONV_STD_LOGIC_VECTOR(480,11) - Size - Size)) THEN
+						Gravity_Motion <= CONV_STD_LOGIC_VECTOR(4,11);
 					-- Compute next ball Y position
 					else
-						Gravity_Motion <= CONV_STD_LOGIC_VECTOR(0,10);
+						Gravity_Motion <= CONV_STD_LOGIC_VECTOR(0,11);
 
 					END IF;
 			ELSE
