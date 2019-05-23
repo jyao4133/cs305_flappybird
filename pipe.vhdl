@@ -24,14 +24,14 @@ architecture behavior of pipe is
 	SIGNAL Red_Data, Green_Data, Blue_Data,
 			reset, Pipe_on, Direction,spawn_flag			: std_logic;
 	--gravity motion is just the left motion for now
-	SIGNAL Pipe_X_motion,Left_Click_Motion,X_Motion 						: std_logic_vector(10 DOWNTO 0);
-	SIGNAL Pipe_Y_pos		: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(0,11);
-	SIGNAL Pipe_X_pos		: std_logic_vector(10 DOWNTO 0):= "01010000000";
-	SIGNAL u_Ypos, u_Yspeed 			: unsigned(10 DOWNTO 0);
-	Signal bottom_boundary									: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(460,11);
+	SIGNAL Pipe_X_motion,Left_Click_Motion,X_Motion 	: std_logic_vector(10 DOWNTO 0);
+	SIGNAL Pipe_Y_pos												: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(0,11);
+	SIGNAL Pipe_X_pos												: std_logic_vector(10 DOWNTO 0):= "01010000000";
+	SIGNAL u_Ypos, u_Yspeed 									: unsigned(10 DOWNTO 0);
+	Signal bottom_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(460,11);
 	--hardcoded size in there which is 8
-	Signal top_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(100,11);
-	Constant Size											      : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(10,11);	
+	Signal top_boundary											: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(100,11);
+	Constant Size											   	: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(10,11);	
 	
 	--keep this in case we change to unsigned
 	
@@ -87,7 +87,7 @@ BEGIN
 					Pipe_X_pos <= Pipe_X_Pos + X_Motion;
 					
 					
-					bottom_boundary <= top_boundary + CONV_STD_LOGIC_VECTOR(32,  11);
+					bottom_boundary <= top_boundary + CONV_STD_LOGIC_VECTOR(100,  11);
 
 
 			else	

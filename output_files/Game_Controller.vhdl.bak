@@ -1,0 +1,148 @@
+
+-- A Synchronous Mealy machine to control the game
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity Game_Controller is
+	port(
+		clk,mouse_click,sw_0,player_dead: in std_logic;
+		state_num :out std_logic_vector(2 downto 0)
+		);
+end entity;
+
+architecture rtl of Game_Controller is
+	begin
+	
+	
+	
+	
+end rtl;	
+
+--entity uart_receiver_fsm is
+--	port
+--	(
+--		clk, rx, reset: in std_logic;
+--		cc_value : in std_logic_vector(3 downto 0);
+--		debug_fsm : out std_logic_vector(3 downto 0);
+--		cc_reset, cc_enable, bc_reset, bc_enable, shift_enable, shift_reset : out std_logic;
+--		bc_value : in std_logic_vector(2 downto 0);
+--		data_ready : out std_logic
+--	);
+--end entity;
+--architecture rtl of uart_receiver_fsm is
+--	-- Build an enumerated type for the state machine
+--	type state_type is (s_idle, s_start, s_data, s_stop);
+--	-- Register (and signal) to hold the current (and next) state
+--	signal state, next_state : state_type := s_idle;
+--begin
+--	state_reg: process (clk,reset)
+--	begin
+--		if reset = '1' then -- reset logic
+--			state <= s_idle;
+--		elsif (rising_edge(clk)) then -- next state register:
+--			state <= next_state;
+--		end if;
+--	end process;
+--	-- Determine the next state based only on the current state
+--	-- and the input (do not wait for a clock edge).
+--	next_state_fn: process(state,rx, cc_value, bc_value)
+--	begin
+--		case state is
+--			when s_idle =>
+--				if rx = '0' then
+--					next_state <= s_start;
+--				else
+--					next_state <= s_idle;
+--				end if;
+--				
+--			when s_start =>
+--				if cc_value = "0111" then
+--					next_state <= s_data;
+--				else  	
+--					next_state <= s_start;
+--					end if;
+--					
+--			when s_data =>
+--				if ((bc_value = "111") and (cc_value = "1111")) then
+--					
+--					next_state <= s_stop;
+--				else 
+--					next_state <= s_data;
+--					end if;
+--					
+--			when s_stop =>
+--				if cc_value = "1111" then 
+--					next_state <= s_idle;
+--				else 
+--					next_state <= s_stop;
+--					end if;
+--		end case;
+--	end process;
+--
+--	-- Determine the output based only on the current state
+--	-- and the input (do not wait for a clock edge).
+--	output_fn: process (state, rx, cc_value, bc_value) -- output logic
+--	begin
+--		-- default output values
+--		cc_enable <= '0';
+--		cc_reset <= '0';
+--		bc_enable <= '0';
+--		bc_reset <= '0';
+--		shift_enable <= '0';
+--		shift_reset <= '0';
+--		data_ready <= '0';
+--		
+--		
+--		debug_fsm <= "1111"; --useful for LED debugging
+--		case state is
+--			when s_idle =>
+--			
+--			
+--				if rx = '0' then
+--					cc_reset <= '1';
+--				end if;
+--				debug_fsm(0) <= '0';
+--				
+--			when s_start =>
+--				if cc_value = "0111" then 
+--				cc_reset <= '1';
+--				else
+--				cc_enable <= '1';
+--				
+--				end if;
+--				debug_fsm(1) <= '0';
+--				
+--			when s_data =>
+--				if cc_value < "1111" then
+--				   cc_enable <= '1';
+--					
+--				elsif (cc_value = "1111" and bc_value < "111")	then
+-- 					cc_reset <= '1';
+--					bc_enable <= '1';
+--					shift_enable <= '1';
+--				elsif (cc_value = "1111" and bc_value = "111") then
+--					bc_reset <= '1';
+--					cc_reset <= '1';
+--					shift_enable <= '1';				
+--				end if;
+--				debug_fsm(2) <= '0';
+--				
+--			when s_stop =>
+--				if cc_value = "1111" then 
+--				cc_reset <= '1';
+--			
+--				bc_reset <= '1';
+--				 if cc_value = "1111" then
+--				data_ready <= '1';
+--				cc_reset<='1';
+--				cc_enable<='0';
+--				 end if;
+--				else
+--				cc_enable <= '1';
+--				end if;
+--				debug_fsm(3) <= '0';
+--				
+--		end case;
+--	end process;
+--end rtl;
