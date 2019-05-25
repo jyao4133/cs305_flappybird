@@ -1,0 +1,37 @@
+LIBRARY ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity score_counter is
+	port (clk, collision_on: in std_logic;
+			health : out unsigned(3 downto 0));
+end score_counter;
+
+Architecture score of score_counter is
+	begin	
+		
+		process(collision_on,clk)
+
+		variable delay : std_logic_vector(18 downto 0):="0000000000000000000";
+		variable initial_health : unsigned (3 downto 0):= "0101";
+
+		begin
+		if (rising_edge(clk)) then
+				--2^19 counter
+				if(collision_on AND delay > "1100001111100000110") then
+					delay := "0000000000000000000";
+					
+					initial_health := initial_health - 1;
+
+				else 
+					delay := delay + 1;
+
+				end if;	
+		end if;
+		
+						health <= initial_health;
+
+		end process;
+		
+end architecture score;
+		

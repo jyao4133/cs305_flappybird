@@ -62,7 +62,7 @@ BEGIN
 		clock_enable_output_a => "BYPASS",
 		init_file => "tcgrom.mif",
 		intended_device_family => "Cyclone III",
-		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
+		lpm_hint => "ENABLE_RUNTIME_MOD=YES",
 		lpm_type => "altsyncram",
 		numwords_a => 512,
 		operation_mode => "ROM",

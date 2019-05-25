@@ -52,6 +52,20 @@ applicable agreement for further details.
 		(line (pt 0 80)(pt 16 80)(line_width 3))
 	)
 	(port
+		(pt 0 96)
+		(input)
+		(text "health[3..0]" (rect 0 0 42 12)(font "Arial" ))
+		(text "health[3..0]" (rect 21 91 63 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "energy[3..0]" (rect 0 0 48 12)(font "Arial" ))
+		(text "energy[3..0]" (rect 21 107 69 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
 		(pt 248 32)
 		(output)
 		(text "r_ball[3..0]" (rect 0 0 41 12)(font "Arial" ))

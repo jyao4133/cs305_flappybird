@@ -4,13 +4,18 @@ use ieee.std_logic_unsigned.all;
 --This is a priority mux which chooses the configuration of loading elements on the vga screen
 --Inputs: RGB Values from each relement and Enable Signal from each element
 entity render_mux is
-	port (r_ball,g_ball,b_ball : in std_logic_vector(3 downto 0);
-	r_text,g_text,b_text			: in std_logic_vector(3 downto 0);
-	r_pipe,g_pipe,b_pipe			: in std_logic_vector(3 downto 0);
-	ball_on,text_on,pipe_on,collide		: in std_logic; -- collide unused
-	colliding: out std_logic;
-	r,g,b: out std_logic_vector(3 downto 0);
-	state_num : in std_logic_vector(2 downto 0));
+	port (r_ball,g_ball,b_ball 					: in std_logic_vector(3 downto 0);
+			r_text,g_text,b_text						: in std_logic_vector(3 downto 0);
+			r_pipe,g_pipe,b_pipe						: in std_logic_vector(3 downto 0);
+			ball_on,text_on,pipe_on,collide		: in std_logic; -- collide unused
+			colliding									: out std_logic;
+			r,g,b											: out std_logic_vector(3 downto 0);
+			state_num									: in std_logic_vector(2 downto 0);
+			r_energy,g_energy,b_energy 			: in std_logic_vector(3 downto 0); --blue and green unused 
+			energy_on									: in std_logic;
+			r_pickup,g_pickup,b_pickup 			: in std_logic_vector(3 downto 0); --blue and green unused 
+			pickup_on									: in std_logic
+			);
 end render_mux;
 
 Architecture render of render_mux is
@@ -46,6 +51,15 @@ signal Collision : std_logic:= '0' ;
 				r<=r_pipe;
 				g<=g_pipe;
 				b<=b_pipe;
+			elsif (energy_on /= '0') then
+				r <= r_energy;
+				g <= g_energy;
+				b <= b_energy;
+			elsif (pickup_on /= '0') then
+				r <= r_pickup;
+				g <= g_pickup;
+				b <= b_pickup;
+				
 				
 			else 
 					r<="1111";

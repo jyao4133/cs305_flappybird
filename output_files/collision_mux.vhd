@@ -7,7 +7,8 @@ entity collision_mux is
 	port ( 
 	
 		collision_on : out std_logic;
-		clk,pipe_on,ball_on : in std_logic);
+		clk,pipe_on,ball_on : in std_logic;
+		pipe_x :in std_logic_vector(10 downto 0));
 
 		
 end collision_mux;
@@ -16,7 +17,7 @@ Architecture render of collision_mux is
 	Signal tmp_c: std_logic:='0';
 	begin	
 		
-		process(pipe_on, ball_on)
+		process(pipe_on, ball_on, pipe_x)
 			begin
 				
 				
@@ -46,8 +47,11 @@ Architecture render of collision_mux is
 	--				end if;
 			--end if;		
 				
-				if (pipe_on /= '0' AND ball_on /= '0') then
+				if (pipe_on /= '0' AND ball_on /= '0' and pipe_x < "00101010100" and pipe_x > "00100101100") then
 					tmp_c <= '1';
+					
+				else 
+					tmp_c <= '0';
 
 				end if;
 

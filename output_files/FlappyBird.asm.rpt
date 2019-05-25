@@ -1,5 +1,5 @@
 Assembler report for FlappyBird
-Thu May 23 19:21:59 2019
+Sat May 25 17:10:20 2019
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -9,9 +9,10 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
   1. Legal Notice
   2. Assembler Summary
   3. Assembler Settings
-  4. Assembler Generated Files
-  5. Assembler Device Options: D:/cs302/cs305_flappybird/output_files/FlappyBird.sof
-  6. Assembler Messages
+  4. Assembler Encrypted IP Cores Summary
+  5. Assembler Generated Files
+  6. Assembler Device Options: D:/202project/cs305_flappybird/output_files/FlappyBird.sof
+  7. Assembler Messages
 
 
 
@@ -37,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu May 23 19:21:59 2019 ;
+; Assembler Status      ; Successful - Sat May 25 17:10:20 2019 ;
 ; Revision Name         ; FlappyBird                            ;
 ; Top-level Entity Name ; Colour                                ;
 ; Family                ; Cyclone III                           ;
@@ -77,24 +78,34 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+-------------------------------------------------------+
-; Assembler Generated Files                             ;
-+-------------------------------------------------------+
-; File Name                                             ;
-+-------------------------------------------------------+
-; D:/cs302/cs305_flappybird/output_files/FlappyBird.sof ;
-+-------------------------------------------------------+
++------------------------------------------------+
+; Assembler Encrypted IP Cores Summary           ;
++--------+------------------------+--------------+
+; Vendor ; IP Core Name           ; License Type ;
++--------+------------------------+--------------+
+; Altera ; Signal Tap (6AF7 BCE1) ; Licensed     ;
+; Altera ; Signal Tap (6AF7 BCEC) ; Licensed     ;
++--------+------------------------+--------------+
 
 
-+---------------------------------------------------------------------------------+
-; Assembler Device Options: D:/cs302/cs305_flappybird/output_files/FlappyBird.sof ;
-+----------------+----------------------------------------------------------------+
-; Option         ; Setting                                                        ;
-+----------------+----------------------------------------------------------------+
-; Device         ; EP3C16F484C6                                                   ;
-; JTAG usercode  ; 0x00119DA4                                                     ;
-; Checksum       ; 0x00119DA4                                                     ;
-+----------------+----------------------------------------------------------------+
++------------------------------------------------------------+
+; Assembler Generated Files                                  ;
++------------------------------------------------------------+
+; File Name                                                  ;
++------------------------------------------------------------+
+; D:/202project/cs305_flappybird/output_files/FlappyBird.sof ;
++------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Assembler Device Options: D:/202project/cs305_flappybird/output_files/FlappyBird.sof ;
++----------------+---------------------------------------------------------------------+
+; Option         ; Setting                                                             ;
++----------------+---------------------------------------------------------------------+
+; Device         ; EP3C16F484C6                                                        ;
+; JTAG usercode  ; 0x0013D7E2                                                          ;
+; Checksum       ; 0x0013D7E2                                                          ;
++----------------+---------------------------------------------------------------------+
 
 
 +--------------------+
@@ -103,14 +114,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Thu May 23 19:21:57 2019
+    Info: Processing started: Sat May 25 17:10:18 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off FlappyBird -c FlappyBird
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 480 megabytes
-    Info: Processing ended: Thu May 23 19:21:59 2019
+    Info: Peak virtual memory: 484 megabytes
+    Info: Processing ended: Sat May 25 17:10:20 2019
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 
