@@ -14,7 +14,8 @@ entity render_mux is
 			r_energy,g_energy,b_energy 			: in std_logic_vector(3 downto 0); --blue and green unused 
 			energy_on									: in std_logic;
 			r_pickup,g_pickup,b_pickup 			: in std_logic_vector(3 downto 0); --blue and green unused 
-			pickup_on									: in std_logic
+			pickup_on									: in std_logic;
+			pickup_collide								: out std_logic
 			);
 end render_mux;
 
@@ -34,13 +35,20 @@ signal Collision : std_logic:= '0' ;
 				r<=r_ball;
 				g<=g_ball;
 				b<=b_ball;
+				pickup_collide<='0';
 					if (pipe_on /='0' and ball_on /='0') then --black if both are on
 						r<="0000";
 						g<="0000";
 						b<="1111";
 						colliding <= '1';
+					elsif(pickup_on /= '0' )then --ball pickup becomes white
+						r<="1111";
+						g<="1111";
+						b <= "0000";
+						pickup_collide<='1';
+					
 					else 
-						colliding <= '0';
+						pickup_collide <= '0';
 					end if;
 			
 			elsif (text_on /= '0') then
@@ -56,6 +64,7 @@ signal Collision : std_logic:= '0' ;
 				g <= g_energy;
 				b <= b_energy;
 			elsif (pickup_on /= '0') then
+				
 				r <= r_pickup;
 				g <= g_pickup;
 				b <= b_pickup;

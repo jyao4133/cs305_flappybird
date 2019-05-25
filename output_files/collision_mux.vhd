@@ -19,34 +19,7 @@ Architecture render of collision_mux is
 		
 		process(pipe_on, ball_on, pipe_x)
 			begin
-				
-				
-				--Artifacts from previous collision algorithm
-			-- if(rising_edge(clk))then
-	--			if(vert_sync'event and vert_sync='1') then
-	--				--Checking if the ball top right corner intersects the pipe left side area
-	--				if ((((ball_x) + ball_size >= pipe_x) OR 
-	--					--Checking if the ball top right corner intersects the pipe right side area
-	--					((ball_x) + ball_size <= pipe_x + pipe_size)) or
-	--					--Checking if the ball top left corner intersects the pipe left side area
-	--					(((ball_x) >= pipe_x) OR
-	--					--Checking if the ball top left corner intersects the pipe right side area
-	--					(((ball_x)<= pipe_x + pipe_size)))) and 
-	--					--Checking that the top of the ball is intersecting with top pipe
-	--					(ball_y<=pipe_y or
-	--					--Checking that the bottom of the ball is intersecting with the bottom pipe
-	--					 ball_y+ball_size >= pipe_y+ pipe_gap) then
-	--					 
-	--					 collision_on <= '0';
-	--					 
-	--				else
-	--					
-	--					collision_on <= '1';
-	--					
-	--					
-	--				end if;
-			--end if;		
-				
+
 				if (pipe_on /= '0' AND ball_on /= '0' and pipe_x < "00101010100" and pipe_x > "00100101100") then
 					tmp_c <= '1';
 					

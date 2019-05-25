@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FlappyBird
-Sat May 25 17:10:08 2019
+Sat May 25 18:58:34 2019
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -60,16 +60,16 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat May 25 17:10:08 2019       ;
+; Analysis & Synthesis Status        ; Successful - Sat May 25 18:58:34 2019       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; FlappyBird                                  ;
 ; Top-level Entity Name              ; Colour                                      ;
 ; Family                             ; Cyclone III                                 ;
-; Total logic elements               ; 889                                         ;
-;     Total combinational functions  ; 786                                         ;
-;     Dedicated logic registers      ; 401                                         ;
-; Total registers                    ; 401                                         ;
-; Total pins                         ; 40                                          ;
+; Total logic elements               ; 908                                         ;
+;     Total combinational functions  ; 803                                         ;
+;     Dedicated logic registers      ; 402                                         ;
+; Total registers                    ; 402                                         ;
+; Total pins                         ; 41                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 4,096                                       ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -207,6 +207,7 @@ applicable agreement for further details.
 ; output_files/Energy_Counter.vhdl   ; yes             ; User VHDL File                         ; D:/202project/cs305_flappybird/output_files/Energy_Counter.vhdl      ;         ;
 ; output_files/Energy_decount.vhd    ; yes             ; User VHDL File                         ; D:/202project/cs305_flappybird/output_files/Energy_decount.vhd       ;         ;
 ; output_files/Pickup.vhdl           ; yes             ; User VHDL File                         ; D:/202project/cs305_flappybird/output_files/Pickup.vhdl              ;         ;
+; pickup_collision.vhd               ; yes             ; User VHDL File                         ; D:/202project/cs305_flappybird/pickup_collision.vhd                  ;         ;
 ; altpll.tdf                         ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/altpll.tdf            ;         ;
 ; aglobal130.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/aglobal130.inc        ;         ;
 ; stratix_pll.inc                    ; yes             ; Megafunction                           ; c:/altera/13.0/quartus/libraries/megafunctions/stratix_pll.inc       ;         ;
@@ -236,23 +237,23 @@ applicable agreement for further details.
 +---------------------------------------------+-------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                           ;
 +---------------------------------------------+-------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 889                                                                                             ;
+; Estimated Total logic elements              ; 908                                                                                             ;
 ;                                             ;                                                                                                 ;
-; Total combinational functions               ; 786                                                                                             ;
+; Total combinational functions               ; 803                                                                                             ;
 ; Logic element usage by number of LUT inputs ;                                                                                                 ;
-;     -- 4 input functions                    ; 255                                                                                             ;
-;     -- 3 input functions                    ; 197                                                                                             ;
-;     -- <=2 input functions                  ; 334                                                                                             ;
+;     -- 4 input functions                    ; 267                                                                                             ;
+;     -- 3 input functions                    ; 201                                                                                             ;
+;     -- <=2 input functions                  ; 335                                                                                             ;
 ;                                             ;                                                                                                 ;
 ; Logic elements by mode                      ;                                                                                                 ;
-;     -- normal mode                          ; 479                                                                                             ;
-;     -- arithmetic mode                      ; 307                                                                                             ;
+;     -- normal mode                          ; 484                                                                                             ;
+;     -- arithmetic mode                      ; 319                                                                                             ;
 ;                                             ;                                                                                                 ;
-; Total registers                             ; 401                                                                                             ;
-;     -- Dedicated logic registers            ; 401                                                                                             ;
+; Total registers                             ; 402                                                                                             ;
+;     -- Dedicated logic registers            ; 402                                                                                             ;
 ;     -- I/O registers                        ; 0                                                                                               ;
 ;                                             ;                                                                                                 ;
-; I/O pins                                    ; 40                                                                                              ;
+; I/O pins                                    ; 41                                                                                              ;
 ; Total memory bits                           ; 4096                                                                                            ;
 ; Embedded Multiplier 9-bit elements          ; 0                                                                                               ;
 ; Total PLLs                                  ; 1                                                                                               ;
@@ -260,8 +261,8 @@ applicable agreement for further details.
 ;                                             ;                                                                                                 ;
 ; Maximum fan-out node                        ; Clock_Divider:inst|altpll:altpll_component|Clock_Divider_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 202                                                                                             ;
-; Total fan-out                               ; 3686                                                                                            ;
-; Average fan-out                             ; 2.86                                                                                            ;
+; Total fan-out                               ; 3752                                                                                            ;
+; Average fan-out                             ; 2.87                                                                                            ;
 +---------------------------------------------+-------------------------------------------------------------------------------------------------+
 
 
@@ -270,7 +271,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                    ; Library Name ;
 +------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |Colour                                                                ; 786 (1)           ; 401 (0)      ; 4096        ; 0            ; 0       ; 0         ; 40   ; 0            ; |Colour                                                                                                                                                                ;              ;
+; |Colour                                                                ; 803 (1)           ; 402 (0)      ; 4096        ; 0            ; 0       ; 0         ; 41   ; 0            ; |Colour                                                                                                                                                                ;              ;
 ;    |BCD_7SegDisplay:inst13|                                            ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|BCD_7SegDisplay:inst13                                                                                                                                         ;              ;
 ;    |Clock_Divider:inst|                                                ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|Clock_Divider:inst                                                                                                                                             ;              ;
 ;       |altpll:altpll_component|                                        ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|Clock_Divider:inst|altpll:altpll_component                                                                                                                     ;              ;
@@ -280,9 +281,9 @@ applicable agreement for further details.
 ;    |Game_Controller:inst5|                                             ; 4 (4)             ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|Game_Controller:inst5                                                                                                                                          ;              ;
 ;    |LFSR:inst600|                                                      ; 1 (1)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|LFSR:inst600                                                                                                                                                   ;              ;
 ;    |MOUSE:inst4|                                                       ; 50 (50)           ; 62 (62)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|MOUSE:inst4                                                                                                                                                    ;              ;
-;    |Pickup:inst19|                                                     ; 86 (86)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|Pickup:inst19                                                                                                                                                  ;              ;
-;    |Text:inst11|                                                       ; 75 (75)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|Text:inst11                                                                                                                                                    ;              ;
-;    |VGA_SYNC:inst2|                                                    ; 73 (73)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|VGA_SYNC:inst2                                                                                                                                                 ;              ;
+;    |Pickup:inst19|                                                     ; 99 (99)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|Pickup:inst19                                                                                                                                                  ;              ;
+;    |Text:inst11|                                                       ; 70 (70)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|Text:inst11                                                                                                                                                    ;              ;
+;    |VGA_SYNC:inst2|                                                    ; 74 (74)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|VGA_SYNC:inst2                                                                                                                                                 ;              ;
 ;    |bcdwiki:inst3|                                                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|bcdwiki:inst3                                                                                                                                                  ;              ;
 ;    |char_rom:inst12|                                                   ; 56 (4)            ; 34 (0)       ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|char_rom:inst12                                                                                                                                                ;              ;
 ;       |altsyncram:altsyncram_component|                                ; 52 (0)            ; 34 (0)       ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|char_rom:inst12|altsyncram:altsyncram_component                                                                                                                ;              ;
@@ -292,10 +293,12 @@ applicable agreement for further details.
 ;                |sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr| ; 17 (17)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr ;              ;
 ;    |health_counter:inst152|                                            ; 41 (41)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|health_counter:inst152                                                                                                                                         ;              ;
 ;    |ourball:inst8|                                                     ; 78 (78)           ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|ourball:inst8                                                                                                                                                  ;              ;
-;    |pipe:inst1|                                                        ; 95 (95)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|pipe:inst1                                                                                                                                                     ;              ;
-;    |score_counter:inst6|                                               ; 45 (45)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|score_counter:inst6                                                                                                                                            ;              ;
-;    |sld_hub:auto_hub|                                                  ; 114 (1)           ; 80 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|sld_hub:auto_hub                                                                                                                                               ;              ;
-;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                   ; 113 (76)          ; 80 (52)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                  ;              ;
+;    |pickup_collision:inst14|                                           ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|pickup_collision:inst14                                                                                                                                        ;              ;
+;    |pipe:inst1|                                                        ; 92 (92)           ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|pipe:inst1                                                                                                                                                     ;              ;
+;    |render_mux:inst923|                                                ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|render_mux:inst923                                                                                                                                             ;              ;
+;    |score_counter:inst6|                                               ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|score_counter:inst6                                                                                                                                            ;              ;
+;    |sld_hub:auto_hub|                                                  ; 118 (1)           ; 80 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|sld_hub:auto_hub                                                                                                                                               ;              ;
+;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                   ; 117 (80)          ; 80 (52)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                  ;              ;
 ;          |sld_rom_sr:hub_info_reg|                                     ; 20 (20)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                          ;              ;
 ;          |sld_shadow_jsm:shadow_jsm|                                   ; 17 (17)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Colour|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_shadow_jsm:shadow_jsm                                                                        ;              ;
 +------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
@@ -361,31 +364,32 @@ Encoding Type:  One-Hot
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                         ;
-+-----------------------------------------------------+------------------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal          ; Free of Timing Hazards ;
-+-----------------------------------------------------+------------------------------+------------------------+
-; render_mux:inst923|b[3]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|b[2]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|b[1]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|b[0]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|g[3]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|g[2]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|g[1]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|g[0]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|r[3]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|r[2]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|r[1]                             ; VCC                          ; yes                    ;
-; render_mux:inst923|r[0]                             ; VCC                          ; yes                    ;
-; Text:inst11|character_add[0]                        ; Text:inst11|character_add[5] ; yes                    ;
-; Text:inst11|character_add[1]                        ; Text:inst11|character_add[5] ; yes                    ;
-; Text:inst11|character_add[2]                        ; Text:inst11|character_add[5] ; yes                    ;
-; Text:inst11|character_add[3]                        ; Text:inst11|character_add[5] ; yes                    ;
-; Text:inst11|character_add[4]                        ; Text:inst11|character_add[5] ; yes                    ;
-; Text:inst11|character_add[5]                        ; Text:inst11|character_add[5] ; yes                    ;
-; Number of user-specified and inferred latches = 18  ;                              ;                        ;
-+-----------------------------------------------------+------------------------------+------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                              ;
++-----------------------------------------------------+-----------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal               ; Free of Timing Hazards ;
++-----------------------------------------------------+-----------------------------------+------------------------+
+; render_mux:inst923|pickup_collide                   ; render_mux:inst923|pickup_collide ; yes                    ;
+; render_mux:inst923|b[3]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|b[2]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|b[1]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|b[0]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|g[3]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|g[2]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|g[1]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|g[0]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|r[3]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|r[2]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|r[1]                             ; VCC                               ; yes                    ;
+; render_mux:inst923|r[0]                             ; VCC                               ; yes                    ;
+; Text:inst11|character_add[0]                        ; Text:inst11|character_add[5]      ; yes                    ;
+; Text:inst11|character_add[1]                        ; Text:inst11|character_add[5]      ; yes                    ;
+; Text:inst11|character_add[2]                        ; Text:inst11|character_add[5]      ; yes                    ;
+; Text:inst11|character_add[3]                        ; Text:inst11|character_add[5]      ; yes                    ;
+; Text:inst11|character_add[4]                        ; Text:inst11|character_add[5]      ; yes                    ;
+; Text:inst11|character_add[5]                        ; Text:inst11|character_add[5]      ; yes                    ;
+; Number of user-specified and inferred latches = 19  ;                                   ;                        ;
++-----------------------------------------------------+-----------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
@@ -407,7 +411,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MOUSE:inst4|CHAROUT[2]                                                                                                                  ; Stuck at VCC due to stuck port data_in         ;
 ; MOUSE:inst4|CHAROUT[0,1]                                                                                                                ; Stuck at GND due to stuck port data_in         ;
 ; MOUSE:inst4|SHIFTOUT[10]                                                                                                                ; Stuck at VCC due to stuck port data_in         ;
-; pipe:inst1|bottom_boundary[9,10]                                                                                                        ; Stuck at GND due to stuck port data_in         ;
+; pipe:inst1|bottom_boundary[10]                                                                                                          ; Stuck at GND due to stuck port data_in         ;
 ; ourball:inst8|Left_Click_Motion[4..10]                                                                                                  ; Merged with ourball:inst8|Left_Click_Motion[0] ;
 ; Pickup:inst19|Pickup_X_pos[0]                                                                                                           ; Stuck at GND due to stuck port data_in         ;
 ; pipe:inst1|Pipe_X_pos[0]                                                                                                                ; Stuck at GND due to stuck port data_in         ;
@@ -419,7 +423,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Game_Controller:inst5|next_state.s_gameover                                                                                             ; Stuck at GND due to stuck port data_in         ;
 ; Game_Controller:inst5|state.s_gameover                                                                                                  ; Stuck at GND due to stuck port data_in         ;
 ; char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3] ; Stuck at GND due to stuck port data_in         ;
-; Total Number of Removed Registers = 73                                                                                                  ;                                                ;
+; Total Number of Removed Registers = 72                                                                                                  ;                                                ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
 
 
@@ -431,7 +435,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; pipe:inst1|Pipe_X_pos[0]                    ; Stuck at GND              ; score_counter:inst6|count_ones[6], score_counter:inst6|count_ones[7], ;
 ;                                             ; due to stuck port data_in ; score_counter:inst6|count_ones[9], score_counter:inst6|count_ones[8], ;
 ;                                             ;                           ; score_counter:inst6|count_ones[4], score_counter:inst6|count_ones[5]  ;
-; pipe:inst1|top_boundary[8]                  ; Stuck at GND              ; pipe:inst1|bottom_boundary[9], pipe:inst1|bottom_boundary[10]         ;
+; pipe:inst1|top_boundary[8]                  ; Stuck at GND              ; pipe:inst1|bottom_boundary[10]                                        ;
 ;                                             ; due to stuck port data_in ;                                                                       ;
 ; Game_Controller:inst5|next_state.s_gameover ; Stuck at GND              ; Game_Controller:inst5|state.s_gameover                                ;
 ;                                             ; due to stuck port data_in ;                                                                       ;
@@ -443,12 +447,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 401   ;
+; Total registers                              ; 402   ;
 ; Number of registers using Synchronous Clear  ; 57    ;
 ; Number of registers using Synchronous Load   ; 43    ;
 ; Number of registers using Asynchronous Clear ; 62    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 212   ;
+; Number of registers using Clock Enable       ; 213   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -458,29 +462,28 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +------------------------------------------------------------------------------+---------+
 ; Inverted Register                                                            ; Fan out ;
 +------------------------------------------------------------------------------+---------+
+; Pickup:inst19|Pickup_X_pos[7]                                                ; 6       ;
+; Pickup:inst19|Pickup_X_pos[8]                                                ; 6       ;
+; Pickup:inst19|Pickup_X_pos[6]                                                ; 7       ;
+; Pickup:inst19|Pickup_X_pos[1]                                                ; 7       ;
 ; ourball:inst8|Ball_Y_pos[7]                                                  ; 5       ;
 ; ourball:inst8|Ball_Y_pos[6]                                                  ; 5       ;
 ; ourball:inst8|Ball_Y_pos[5]                                                  ; 5       ;
 ; ourball:inst8|Ball_Y_pos[4]                                                  ; 5       ;
-; pipe:inst1|Pipe_X_pos[9]                                                     ; 5       ;
-; pipe:inst1|Pipe_X_pos[7]                                                     ; 5       ;
-; pipe:inst1|bottom_boundary[8]                                                ; 1       ;
-; pipe:inst1|bottom_boundary[7]                                                ; 1       ;
 ; pipe:inst1|bottom_boundary[6]                                                ; 1       ;
+; pipe:inst1|bottom_boundary[4]                                                ; 1       ;
 ; pipe:inst1|bottom_boundary[3]                                                ; 1       ;
-; pipe:inst1|bottom_boundary[2]                                                ; 1       ;
 ; pipe:inst1|top_boundary[6]                                                   ; 2       ;
 ; pipe:inst1|top_boundary[5]                                                   ; 2       ;
 ; pipe:inst1|top_boundary[2]                                                   ; 3       ;
-; health_counter:inst152|initial_health[2]                                     ; 6       ;
-; health_counter:inst152|initial_health[0]                                     ; 7       ;
+; pipe:inst1|bottom_boundary[9]                                                ; 1       ;
+; pipe:inst1|Pipe_X_pos[9]                                                     ; 4       ;
+; pipe:inst1|Pipe_X_pos[7]                                                     ; 4       ;
 ; Energy_decount:inst18|initial_energy[5]                                      ; 2       ;
 ; Energy_decount:inst18|initial_energy[2]                                      ; 2       ;
 ; Energy_decount:inst18|initial_energy[0]                                      ; 2       ;
-; Pickup:inst19|Pickup_X_pos[8]                                                ; 4       ;
-; Pickup:inst19|Pickup_X_pos[5]                                                ; 4       ;
-; Pickup:inst19|Pickup_X_pos[3]                                                ; 4       ;
-; Pickup:inst19|Pickup_X_pos[2]                                                ; 4       ;
+; health_counter:inst152|initial_health[2]                                     ; 6       ;
+; health_counter:inst152|initial_health[0]                                     ; 7       ;
 ; MOUSE:inst4|send_char                                                        ; 3       ;
 ; MOUSE:inst4|SHIFTOUT[3]                                                      ; 1       ;
 ; MOUSE:inst4|SHIFTOUT[5]                                                      ; 1       ;
@@ -490,7 +493,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|tdo            ; 1       ;
 ; sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|jtag_ir_reg[2] ; 2       ;
 ; sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|jtag_ir_reg[1] ; 3       ;
-; Total number of inverted registers = 32                                      ;         ;
+; Total number of inverted registers = 31                                      ;         ;
 +------------------------------------------------------------------------------+---------+
 
 
@@ -499,14 +502,16 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[1]                                        ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                   ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[2]                                                   ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Colour|VGA_SYNC:inst2|v_count[9]                                                                                                                                                      ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; Yes        ; |Colour|health_counter:inst152|delay[1]                                                                                                                                                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Colour|Pickup:inst19|Pickup_X_pos[5]                                                                                                                                                  ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[0]                                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[5]                                                   ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Colour|VGA_SYNC:inst2|v_count[3]                                                                                                                                                      ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[5]                                                   ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; Yes        ; |Colour|health_counter:inst152|delay[6]                                                                                                                                                ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr|word_counter[1] ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 24 LEs               ; 16 LEs                 ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr|WORD_SR[3]      ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Colour|Text:inst11|character_add[5]                                                                                                                                                   ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 24 LEs               ; 16 LEs                 ; Yes        ; |Colour|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr|WORD_SR[2]      ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Colour|Pickup:inst19|Pickup_X_pos[7]                                                                                                                                                  ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Colour|Text:inst11|character_add[4]                                                                                                                                                   ;
 ; 20:1               ; 2 bits    ; 26 LEs        ; 24 LEs               ; 2 LEs                  ; No         ; |Colour|Text:inst11|character_add[1]                                                                                                                                                   ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Colour|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|hub_minor_ver_reg[0]                                                                                             ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Colour|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|mixer_addr_reg[4]                                                                                                ;
@@ -1056,7 +1061,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Sat May 25 17:10:03 2019
+    Info: Processing started: Sat May 25 18:58:28 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FlappyBird -c FlappyBird
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file output_files/bcdwiki.vhdl
@@ -1130,6 +1135,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file output_
 Info (12021): Found 2 design units, including 1 entities, in source file output_files/pickup.vhdl
     Info (12022): Found design unit 1: Pickup-behavior
     Info (12023): Found entity 1: Pickup
+Info (12021): Found 2 design units, including 1 entities, in source file pickup_collision.vhd
+    Info (12022): Found design unit 1: pickup_collision-collision
+    Info (12023): Found entity 1: pickup_collision
 Info (12127): Elaborating entity "Colour" for the top level hierarchy
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst2"
 Info (12128): Elaborating entity "Clock_Divider" for hierarchy "Clock_Divider:inst"
@@ -1194,31 +1202,34 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cloc
     Info (12023): Found entity 1: Clock_Divider_altpll
 Info (12128): Elaborating entity "Clock_Divider_altpll" for hierarchy "Clock_Divider:inst|altpll:altpll_component|Clock_Divider_altpll:auto_generated"
 Info (12128): Elaborating entity "render_mux" for hierarchy "render_mux:inst923"
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(54): signal "energy_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(55): signal "r_energy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(56): signal "g_energy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(57): signal "b_energy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(58): signal "pickup_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(59): signal "r_pickup" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(60): signal "g_pickup" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at render_mux.vhd(61): signal "b_pickup" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at render_mux.vhd(25): inferring latch(es) for signal or variable "r", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at render_mux.vhd(25): inferring latch(es) for signal or variable "g", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at render_mux.vhd(25): inferring latch(es) for signal or variable "b", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at render_mux.vhd(25): inferring latch(es) for signal or variable "colliding", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "colliding" at render_mux.vhd(25)
-Info (10041): Inferred latch for "b[0]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "b[1]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "b[2]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "b[3]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "g[0]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "g[1]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "g[2]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "g[3]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "r[0]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "r[1]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "r[2]" at render_mux.vhd(25)
-Info (10041): Inferred latch for "r[3]" at render_mux.vhd(25)
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(44): signal "pickup_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(62): signal "energy_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(63): signal "r_energy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(64): signal "g_energy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(65): signal "b_energy" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(66): signal "pickup_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(68): signal "r_pickup" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(69): signal "g_pickup" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at render_mux.vhd(70): signal "b_pickup" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at render_mux.vhd(26): inferring latch(es) for signal or variable "r", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at render_mux.vhd(26): inferring latch(es) for signal or variable "g", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at render_mux.vhd(26): inferring latch(es) for signal or variable "b", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at render_mux.vhd(26): inferring latch(es) for signal or variable "pickup_collide", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at render_mux.vhd(26): inferring latch(es) for signal or variable "colliding", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "colliding" at render_mux.vhd(26)
+Info (10041): Inferred latch for "pickup_collide" at render_mux.vhd(26)
+Info (10041): Inferred latch for "b[0]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "b[1]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "b[2]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "b[3]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "g[0]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "g[1]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "g[2]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "g[3]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "r[0]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "r[1]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "r[2]" at render_mux.vhd(26)
+Info (10041): Inferred latch for "r[3]" at render_mux.vhd(26)
 Info (12128): Elaborating entity "ourball" for hierarchy "ourball:inst8"
 Warning (10541): VHDL Signal Declaration warning at Ourball.vhd(18): used implicit default value for signal "Horiz_sync" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at Ourball.vhd(18): used implicit default value for signal "Vert_sync" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
@@ -1315,13 +1326,34 @@ Info (12128): Elaborating entity "Energy_decount" for hierarchy "Energy_decount:
 Info (12128): Elaborating entity "Pickup" for hierarchy "Pickup:inst19"
 Warning (10541): VHDL Signal Declaration warning at Pickup.vhdl(15): used implicit default value for signal "Horiz_sync" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at Pickup.vhdl(15): used implicit default value for signal "Vert_sync" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10540): VHDL Signal Declaration warning at Pickup.vhdl(32): used explicit default value for signal "top_boundary" because signal was never assigned a value
-Warning (10492): VHDL Process Statement warning at Pickup.vhdl(58): signal "pickup_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at Pickup.vhdl(38): inferring latch(es) for signal or variable "b_pickup", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "b_pickup[0]" at Pickup.vhdl(38)
-Info (10041): Inferred latch for "b_pickup[1]" at Pickup.vhdl(38)
-Info (10041): Inferred latch for "b_pickup[2]" at Pickup.vhdl(38)
-Info (10041): Inferred latch for "b_pickup[3]" at Pickup.vhdl(38)
+Warning (10540): VHDL Signal Declaration warning at Pickup.vhdl(36): used explicit default value for signal "bottom_boundary" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at Pickup.vhdl(38): used explicit default value for signal "top_boundary" because signal was never assigned a value
+Warning (10492): VHDL Process Statement warning at Pickup.vhdl(45): signal "pickup_collision" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at Pickup.vhdl(43): inferring latch(es) for signal or variable "alive_flag", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at Pickup.vhdl(54): signal "alive_flag" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Pickup.vhdl(77): signal "pickup_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Pickup.vhdl(81): signal "pickup_collision" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at Pickup.vhdl(52): inferring latch(es) for signal or variable "pickup_enable", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at Pickup.vhdl(52): inferring latch(es) for signal or variable "pickup_on", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at Pickup.vhdl(52): inferring latch(es) for signal or variable "r_pickup", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at Pickup.vhdl(52): inferring latch(es) for signal or variable "g_pickup", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at Pickup.vhdl(52): inferring latch(es) for signal or variable "b_pickup", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "b_pickup[0]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "b_pickup[1]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "b_pickup[2]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "b_pickup[3]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "g_pickup[0]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "g_pickup[1]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "g_pickup[2]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "g_pickup[3]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "r_pickup[0]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "r_pickup[1]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "r_pickup[2]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "r_pickup[3]" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "pickup_on" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "pickup_enable" at Pickup.vhdl(52)
+Info (10041): Inferred latch for "alive_flag" at Pickup.vhdl(43)
+Info (12128): Elaborating entity "Game_Controller" for hierarchy "Game_Controller:inst5"
 Info (12128): Elaborating entity "char_rom" for hierarchy "char_rom:inst12"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "char_rom:inst12|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "char_rom:inst12|altsyncram:altsyncram_component"
@@ -1358,7 +1390,7 @@ Info (12133): Instantiated megafunction "char_rom:inst12|altsyncram:altsyncram_c
     Info (12134): Parameter "WIDTH_WORD" = "8"
     Info (12134): Parameter "WIDTHAD" = "9"
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "char_rom:inst12|altsyncram:altsyncram_component|altsyncram_81a1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:no_name_gen:info_rom_sr"
-Info (12128): Elaborating entity "Game_Controller" for hierarchy "Game_Controller:inst5"
+Info (12128): Elaborating entity "pickup_collision" for hierarchy "pickup_collision:inst14"
 Info (12128): Elaborating entity "BCD_7SegDisplay" for hierarchy "BCD_7SegDisplay:inst7"
 Info (12128): Elaborating entity "bcdwiki" for hierarchy "bcdwiki:inst3"
 Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
@@ -1370,6 +1402,8 @@ Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
     Info (13026): Duplicate LATCH primitive "render_mux:inst923|r[2]" merged with LATCH primitive "render_mux:inst923|r[3]"
     Info (13026): Duplicate LATCH primitive "render_mux:inst923|r[1]" merged with LATCH primitive "render_mux:inst923|r[3]"
     Info (13026): Duplicate LATCH primitive "render_mux:inst923|r[0]" merged with LATCH primitive "render_mux:inst923|r[3]"
+Warning (13012): Latch render_mux:inst923|pickup_collide has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal ourball:inst8|ball_signal
 Warning (13012): Latch Text:inst11|character_add[0] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst2|pixel_column[9]
 Warning (13012): Latch Text:inst11|character_add[1] has unsafe behavior
@@ -1398,17 +1432,17 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 953 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 973 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 37 output pins
+    Info (21059): Implemented 38 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 899 logic cells
+    Info (21061): Implemented 918 logic cells
     Info (21064): Implemented 8 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 106 warnings
-    Info: Peak virtual memory: 608 megabytes
-    Info: Processing ended: Sat May 25 17:10:08 2019
-    Info: Elapsed time: 00:00:05
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 119 warnings
+    Info: Peak virtual memory: 599 megabytes
+    Info: Processing ended: Sat May 25 18:58:34 2019
+    Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:06
 
 

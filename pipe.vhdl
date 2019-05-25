@@ -28,7 +28,7 @@ architecture behavior of pipe is
 	SIGNAL Pipe_Y_pos												: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(0,11);
 	SIGNAL Pipe_X_pos												: std_logic_vector(10 DOWNTO 0):= "01010000000";
 	SIGNAL u_Ypos, u_Yspeed 									: unsigned(10 DOWNTO 0);
-	Signal bottom_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(460,11);
+	Signal bottom_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(600,11);
 	--hardcoded size in there which is 8
 	Signal top_boundary											: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(100,11);
 	Constant Size											   	: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(10,11);	
