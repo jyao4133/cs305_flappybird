@@ -13,7 +13,7 @@ end entity;
 
 architecture rtl of Game_Controller is
 	-- Build an enumerated type for the state machine
-	type state_type is (s_start,s_play,s_pause,s_gameover);
+	type state_type is (s_start,s_pause,s_play,s_gameover);
 	-- Register (and signal) to hold the current (and next) state
 	signal state, next_state : state_type := s_start;
 	begin
@@ -24,10 +24,12 @@ architecture rtl of Game_Controller is
 			 end if;
 			end process;
 		-- Determine the next state based only on the current state
-	   -- and the input (do not wait for a clock edge).	
-		next_state_fn:process(state,clk,sw_0,mouse_click)
+	   -- and the input 	
+		next_state_fn:process(state,sw_0,mouse_click,player_dead)
 			begin
-				if(rising_edge(clk)) then
+
+			 if rising_edge(clk) then
+
 					case state is
 						
 						when s_start =>
@@ -37,18 +39,28 @@ architecture rtl of Game_Controller is
 								next_state <= s_start;
 							end if;
 						when s_play =>
-							if(sw_0='1') then
+							if(player_dead ='1') then
+								next_state <= s_gameover;
+							elsif(sw_0='0') then
 								next_state <= s_pause;
 							else
 								next_state <= s_play;
 							end if; 
 							
+						when s_gameover =>
+							if(mouse_click='1') then
+								next_state <= s_start;
+							else
+								next_state <= s_gameover;
+							end if;
+														
 						when s_pause =>
-							if(sw_0='0') then
+							if(sw_0='1') then
 								next_state <= s_play;
 							else
 								next_state <= s_pause;
-							end if; 
+							end if;
+						
 						when others =>
 						
 					end case;
@@ -65,9 +77,9 @@ architecture rtl of Game_Controller is
 						when s_start =>
 							state_num<="001"; -- 001 for when the state is "start" 
 						when s_play =>
-							state_num<="010"; -- 010 for when the state is "play"
+							state_num<="011"; -- 010 for when the state is "play"
 						when s_pause =>
-							state_num<="011"; -- 011 for when the state is "pause"
+							state_num<="010"; -- 011 for when the state is "pause"
 						when s_gameover =>
 							state_num<="100"; -- 100 for when the state is "gameover"
 					end case;

@@ -15,6 +15,7 @@ Architecture health of health_counter is
 
 		variable delay : std_logic_vector(22 downto 0):="00000000000000000000000";
 		variable initial_health : std_logic_vector (3 downto 0):= "0101";
+		variable no_health : std_logic;
 
 		begin
 		if (rising_edge(clk)) then
@@ -25,7 +26,11 @@ Architecture health of health_counter is
 					
 					if (initial_health = "0000") then
 						initial_health := "0101";
-						game_over <= '1';
+						
+						no_health := '1';
+					else
+					
+						no_health := '0';
 					end if;
 					
 				
@@ -40,7 +45,7 @@ Architecture health of health_counter is
 		end if;
 		
 						health <= initial_health;
-
+						game_over <= no_health;
 		end process;
 		
 end architecture health;

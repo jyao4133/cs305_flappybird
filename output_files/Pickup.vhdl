@@ -19,7 +19,8 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 		  Signal pickup_collision							: in std_logic;
 		  Signal ball_on : in std_logic;
 		  Signal r_ball, g_ball : in std_logic_vector(3 downto 0);
-		  signal game_state : in std_logic_vector(2 downto 0)
+		  signal game_state : in std_logic_vector(2 downto 0);
+		  Signal flag_out : out std_logic
 		  );
 
 END Pickup;
@@ -30,64 +31,70 @@ architecture behavior of Pickup is
 			reset, pickup_on, Direction,spawn_flag			: std_logic;
 	--gravity motion is just the left motion for now
 	SIGNAL Pipe_X_motion,Left_Click_Motion,X_Motion 	: std_logic_vector(10 DOWNTO 0);
-	SIGNAL Pickup_Y_pos											: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(0,11);
+	SIGNAL Pickup_Y_pos											: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(150,11);
 	SIGNAL Pickup_X_pos											: std_logic_vector(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(450,11);
 	SIGNAL u_Ypos, u_Yspeed 									: unsigned(10 DOWNTO 0);
 	Signal bottom_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(460,11);
 	--hardcoded size in there which is 8
 	Signal top_boundary											: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(100,11);
-	Constant Size											   	: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(30,11);	
-	Signal alive_flag 											: std_logic  := '0';
+	Constant Size											   	: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(5,11);	
 
 begin
-Collision :Process(ball_on,pickup_on,pixel_row,pixel_column)
+--Collision :Process(ball_on,pickup_on,pixel_row,pixel_column)
+--BEGIN
+--	if(pickup_collision = '1'and pixel_column < "00101010100" and pixel_column > "00100101100") then
+--			
+--			alive_flag<='0';
+--	
+--	end if;
+--	
+--end process collision;
+
+	
+
+RGB_Display_Pickup: Process (Pickup_X_pos, Pickup_Y_pos, pixel_column, pixel_row, clock)
+
+	
+
 BEGIN
-	if(pickup_collision = '1'and pixel_column < "00101010100" and pixel_column > "00100101100") then
-			
-			alive_flag<='0';
 	
-	end if;
-	
-end process collision;
-RGB_Display_Pickup: Process (Pickup_X_pos, Pickup_Y_pos, pixel_column, pixel_row, clk)
-BEGIN
-	if(alive_flag='0') then
-	
-		if(pickup_collision = '1') then
-			pickup_enable<='0';
-			pickup_on<='0';
-		end if;
+
 		--Pipe displays with width of size and inside the screen boundary
-			
 		--Determines if pipe is within the x boundaries of the screen
 			IF ( Pickup_X_pos <= pixel_column + Size) AND
 			-- only display ball if it is inside screen ?
 			(Pickup_X_pos + Size >= pixel_column) AND
 			(Pickup_Y_pos <= pixel_row + Size) AND
 			(Pickup_Y_pos + Size >= pixel_row ) THEN
+			
 
-			pickup_enable<='1';
-			pickup_on<='1';
+					pickup_enable<='1';
+					pickup_on<='1';
+
 	  
 	  else
+	  
 			pickup_enable<='0';
 			pickup_on<='0';
 	  end if;
 		R_pickup <=  "1111";
 		
-		G_pickup <=  "1111";
+		G_pickup <=  "0000";
 		
 		
 		-- Turn off Red and Blue when displaying pipe
 		if(pickup_on='1' ) then
-			B_pickup <= "0000";
+			B_pickup <= "1111";
+		else
+			b_pickup<= "0000";
 		end if;	
 		
-
+		if( pickup_collision = '1' and pixel_column < "00101010100" and pixel_column > "00100101100") then
+			pickup_enable<='0';
+			pickup_on<='0';
+		end if;
 				
-	end if;	
-	
-	
+
 	
 
 END process RGB_Display_Pickup;
@@ -117,6 +124,7 @@ BEGIN
 					pickup_Y_pos(10) <= '0';
 					pickup_Y_pos(9) <=  '0';
 					pickup_Y_pos(8) <=  '0';
+					pickup_y_pos(4) <=  '1';
 					pickup_Y_pos(1) <=  '1';
 
 			END IF;

@@ -15,15 +15,21 @@ entity render_mux is
 			energy_on									: in std_logic;
 			r_pickup,g_pickup,b_pickup 			: in std_logic_vector(3 downto 0); --blue and green unused 
 			pickup_on									: in std_logic;
-			pickup_collide								: out std_logic
+			pickup_collide								: out std_logic;
+			r_pickup_pts,g_pickup_pts,b_pickup_pts 			: in std_logic_vector(3 downto 0); --blue and green unused 
+			pickup_pts_on									: in std_logic;
+			pickup_pts_collide								: out std_logic;
+			score_pickup_x, energy_pickup_x     : in std_logic_vector (10 downto 0);
+			score_pickup_y, energy_pickup_y     : in std_logic_vector (10 downto 0)
 			);
 end render_mux;
 
 Architecture render of render_mux is
 signal Collision : std_logic:= '0' ;
+
 	begin	
 		
-		process(r_ball,g_ball,b_ball,r_text,g_text,b_text,ball_on,text_on,r_pipe,g_pipe,b_pipe,pipe_on, state_num)
+		process(r_ball,g_ball,b_ball,r_text,g_text,b_text,ball_on,text_on,r_pipe,g_pipe,b_pipe,pipe_on, state_num, energy_pickup_x)
 		begin
 		if (state_num = "001") then
 					r<="0000";
@@ -45,10 +51,22 @@ signal Collision : std_logic:= '0' ;
 						r<="1111";
 						g<="1111";
 						b <= "0000";
-						pickup_collide<='1';
-					
+--						if(energy_pickup_x <= "00101001010" and energy_pickup_x >= "00100110110") then
+							pickup_collide<='1';
+--						else
+--							pickup_collide <= '0';
+--						end if;
+--					
+					elsif(pickup_pts_on /= '0' )then --ball pickup becomes white
+						r<="1111";
+						g<="1111";
+						b <= "0000";
+						pickup_pts_collide<='1';
+						
 					else 
 						pickup_collide <= '0';
+						pickup_pts_collide<='0';
+
 					end if;
 			
 			elsif (text_on /= '0') then
@@ -63,12 +81,17 @@ signal Collision : std_logic:= '0' ;
 				r <= r_energy;
 				g <= g_energy;
 				b <= b_energy;
-			elsif (pickup_on /= '0') then
+			elsif (pickup_on /= '0' ) then
 				
-				r <= r_pickup;
-				g <= g_pickup;
+				r <= "0000";
+				g <= "0000";
 				b <= b_pickup;
+			elsif (pickup_pts_on /= '0' ) then
 				
+				r <= "0000";
+				g <= "0000";
+				b <= "0000";
+					
 				
 			else 
 					r<="1111";
@@ -81,7 +104,15 @@ signal Collision : std_logic:= '0' ;
 					r<="0000";
 					g<="1111";
 					b<="0000";
+					
+		elsif (state_num = "100") then
+		
+					r<="1111";
+					g<="0000";
+					b<="1111";
 		end if;
+		
+		
 		
 			
 --			if(collision = '1') then

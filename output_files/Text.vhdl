@@ -12,7 +12,7 @@ entity Text is
 	r_ball,g_ball,b_ball :out Std_LOGIC_vector(3 downto 0);
 	Text_on : out Std_logic;
 	character_add : out Std_logic_vector(5 downto 0);
-	score_ones, score_tens : in std_logic_vector(9 downto 0);
+	score_ones, score_tens,score_hundreds : in std_logic_vector(9 downto 0);
 	health, energy : in std_LOGIC_vector(3 downto 0));
 end entity;
 
@@ -29,7 +29,7 @@ begin
 
 	RGB_Display_Text: Process ( pixel_column, pixel_row)
 	BEGIN
-	if (pixel_rows >= (size * 0) and pixel_rows < (size * 1)) and pixel_cols >= (size * 0) and pixel_cols < (size *7) then
+	if (pixel_rows >= (size * 0) and pixel_rows < (size * 1)) and pixel_cols >= (size * 0) and pixel_cols < (size *8) then
 		if ( pixel_cols >= (size * 0) and pixel_cols < (size *1) ) then
 			character_add <= "010011";
 		elsif	( pixel_cols >= (size * 1) and pixel_cols < (size *2) ) then
@@ -40,8 +40,41 @@ begin
 			character_add <= "010010";
 		elsif ( pixel_cols >= (size * 4) and pixel_cols < (size *5)) then
 			character_add <= "000101";
-		--score tens
+			
 		elsif ( pixel_cols >= (size * 5) and pixel_cols < (size *6)) then
+			if (score_hundreds = "0000000000")then
+				character_add <= "110000";
+
+			elsif (score_hundreds = "0000000001")then
+				character_add <= "110001";
+				
+			elsif (score_hundreds = "0000000010")then
+				character_add <= "110010";
+				
+			elsif (score_hundreds = "0000000011")then
+				character_add <= "110011";
+				
+			elsif (score_hundreds = "0000000100")then
+				character_add <= "110100";
+				
+			elsif (score_hundreds = "0000000101")then
+				character_add <= "110101";
+				
+			elsif (score_hundreds = "0000000110")then
+				character_add <= "110110";
+				
+			elsif (score_hundreds = "0000000111")then
+				character_add <= "110111";
+				
+			elsif (score_hundreds = "0000001000")then
+				character_add <= "111000";
+				
+			elsif (score_hundreds = "0000001001")then
+				character_add <= "111001";
+			end if;	
+		
+		--score tens
+		elsif ( pixel_cols >= (size * 6) and pixel_cols < (size *7)) then
 			if (score_tens = "0000000000")then
 				character_add <= "110000";
 
@@ -74,7 +107,7 @@ begin
 			end if;
 		--score ones
 	
-		elsif ( pixel_cols >= (size * 6) and pixel_cols < (size *7)) then
+		elsif ( pixel_cols >= (size * 7) and pixel_cols < (size *8)) then
 			if (score_ones = "0000000000")then
 				character_add <= "110000";
 
@@ -105,7 +138,8 @@ begin
 			elsif (score_ones = "0000001001")then
 				character_add <= "111001";
 			end if;	
-		
+			
+			
 		end if;
 		Text_on<='1';
 	elsif ((pixel_rows >= (size * 1) and pixel_rows < (size * 2)) and pixel_cols >= (size * 0) and pixel_cols < (size * unsigned_health)) then
