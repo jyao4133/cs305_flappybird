@@ -13,7 +13,9 @@ entity Text is
 	Text_on : out Std_logic;
 	character_add : out Std_logic_vector(5 downto 0);
 	score_ones, score_tens,score_hundreds : in std_logic_vector(9 downto 0);
-	health, energy : in std_LOGIC_vector(3 downto 0));
+	health, energy : in std_LOGIC_vector(3 downto 0);
+	state_num : in std_logic_vector (2 downto 0));
+	
 end entity;
 
 architecture behavior of Text is
@@ -155,7 +157,31 @@ begin
 			character_add <= "000000";
 		end if;
 			Text_on<='1';
+	
+	
+	elsif ((pixel_rows >= (size * 0) and pixel_rows < (size * 1)) and pixel_cols >= (size * 10) and pixel_cols < (size * 16)) then
 
+		if ( pixel_cols >= (size * 10) and pixel_cols < (size *11) ) then
+			character_add <= "001100";
+		elsif	( pixel_cols >= (size * 11) and pixel_cols < (size *12) ) then
+			character_add <= "000101";
+		elsif( pixel_cols >= (size * 12) and pixel_cols < (size *13)) then
+			character_add <= "010110";
+		elsif ( pixel_cols >= (size * 13) and pixel_cols < (size *14)) then
+			character_add <= "000101";
+		elsif ( pixel_cols >= (size * 14) and pixel_cols < (size *15)) then
+			character_add <= "001100";
+		elsif ( pixel_cols >= (size * 15) and pixel_cols < (size *16)) then
+			if (score_tens = "0000000000") then
+				character_add <= "110001";
+			elsif (score_tens = "0000000001") then
+				character_add <= "110010";
+			elsif (score_tens >= "0000000010") then
+				character_add <= "110011";
+			end if;
+		end if;
+			Text_on<='1';
+			
 	else
 		Text_on<='0';-- if we do this ball goes away and whole screen has red background
 	end if;

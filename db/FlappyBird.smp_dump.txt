@@ -1,17 +1,19 @@
 
 State Machine - |Colour|Game_Controller:inst5|next_state
-Name next_state.s_gameover next_state.s_play next_state.s_pause next_state.s_start 
-next_state.s_start 0 0 0 0 
-next_state.s_pause 0 0 1 1 
-next_state.s_play 0 1 0 1 
-next_state.s_gameover 1 0 0 1 
+Name next_state.s_training next_state.s_gameover next_state.s_play next_state.s_pause next_state.s_start 
+next_state.s_start 0 0 0 0 0 
+next_state.s_pause 0 0 0 1 1 
+next_state.s_play 0 0 1 0 1 
+next_state.s_gameover 0 1 0 0 1 
+next_state.s_training 1 0 0 0 1 
 
 State Machine - |Colour|Game_Controller:inst5|state
-Name state.s_gameover state.s_play state.s_pause state.s_start 
-state.s_start 0 0 0 0 
-state.s_pause 0 0 1 1 
-state.s_play 0 1 0 1 
-state.s_gameover 1 0 0 1 
+Name state.s_training state.s_gameover state.s_play state.s_pause state.s_start 
+state.s_start 0 0 0 0 0 
+state.s_pause 0 0 0 1 1 
+state.s_play 0 0 1 0 1 
+state.s_gameover 0 1 0 0 1 
+state.s_training 1 0 0 0 1 
 
 State Machine - |Colour|MOUSE:inst4|mouse_state
 Name mouse_state.INPUT_PACKETS mouse_state.WAIT_CMD_ACK mouse_state.WAIT_OUTPUT_READY mouse_state.LOAD_COMMAND2 mouse_state.LOAD_COMMAND mouse_state.INHIBIT_TRANS 

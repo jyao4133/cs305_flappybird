@@ -16,7 +16,9 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
         SIGNAL Red,Green,Blue : OUT std_logic_vector(3 downto 0);
 		  Signal ball_signal 			: OUT std_logic;
         SIGNAL Horiz_sync,Vert_sync		: OUT std_logic;
-		  Signal ball_X,ball_Y, ball_size : Out  std_logic_vector(10 DOWNTO 0));
+		  Signal ball_X,ball_Y, ball_size : Out  std_logic_vector(10 DOWNTO 0);
+		  signal death_flag : out std_logic;
+		  signal state_num : in std_logic_vector (2 downto 0));
 END ourball;
 
 architecture behavior of ourball is
@@ -25,13 +27,14 @@ architecture behavior of ourball is
 			reset, Ball_on, Direction,spawn_flag			   : std_logic;
 	--SIGNAL Size 													   : std_logic_vector(9 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(8,10);
 	SIGNAL Ball_Y_motion,Left_Click_Motion,Gravity_Motion : std_logic_vector(10 DOWNTO 0);
-	SIGNAL Ball_Y_pos												   : std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(240,11);
+	SIGNAL Ball_Y_pos												   : std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(40,11);
 	SIGNAL Ball_X_pos												   : std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(320,  11);
 	
 	Constant bottom_boundary									   : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(480,11);
 	--hardcoded size in there which is 8
 	Signal top_boundary										   : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(8,11);
-	Constant Size													   : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(8,11);	
+	Constant Size													   : std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(8,11);
+	signal death  														: std_logic;	
 
 BEGIN 
 	-- Colors for pixel data on video signal
@@ -77,18 +80,32 @@ BEGIN
 					END IF;
 					--minusing size twice to make sure all of the ball stays in screen
 					if (('0' & Ball_Y_pos) <=  (CONV_STD_LOGIC_VECTOR(480,11) - Size - Size)) THEN
-						Gravity_Motion <= CONV_STD_LOGIC_VECTOR(4,11);
+					
+						if (state_num = "011") then
+							Gravity_Motion <= CONV_STD_LOGIC_VECTOR(4,11);
+						else
+							Gravity_Motion <= CONV_STD_LOGIC_VECTOR(0,11);
+						end if;
 					-- Compute next ball Y position
+						death_flag <= '0';
+						death <= '0';
+
 					else
 						Gravity_Motion <= CONV_STD_LOGIC_VECTOR(0,11);
-
+						death_flag <= '1';
+						death <= '1';
 					END IF;
 			ELSE
 					--Dont really need spawn flag I think - For Jason ?
 					spawn_flag <= '0';
 			END IF;
 			--Update y pos of ball
-			Ball_Y_pos <= Ball_Y_pos +Gravity_Motion+Left_Click_Motion;
+			if (death = '1') then
+				ball_Y_pos <= CONV_STD_LOGIC_VECTOR(40,11);
+			else
+				Ball_Y_pos <= Ball_Y_pos +Gravity_Motion+Left_Click_Motion;
+			end if;
+			
 	END process Move_Ball;
 	--output the x,y pos of ball x pos might be used for horz movement of ball undecided mechanic
 	ball_X<=ball_X_pos;

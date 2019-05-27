@@ -83,7 +83,8 @@ BEGIN
 --	rom_mux_output(2) <= '0';
 --	rom_mux_output(1) <= '0';
 --	rom_mux_output(0) <= '0';
-	rom_mux_output <= "000" & rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+	rom_mux_output <=   rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0))) & rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0))) & rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)))& rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+
 
 	
 

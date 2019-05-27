@@ -1,6 +1,6 @@
 Assembler report for FlappyBird
-Sun May 26 19:41:27 2019
-Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+Mon May 27 18:11:15 2019
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
 ---------------------
@@ -11,7 +11,7 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   3. Assembler Settings
   4. Assembler Encrypted IP Cores Summary
   5. Assembler Generated Files
-  6. Assembler Device Options: C:/Users/user/Desktop/305/cs305_flappybird/output_files/FlappyBird.sof
+  6. Assembler Device Options: D:/monday/cs305_flappybird/output_files/FlappyBird.sof
   7. Assembler Messages
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun May 26 19:41:27 2019 ;
+; Assembler Status      ; Successful - Mon May 27 18:11:15 2019 ;
 ; Revision Name         ; FlappyBird                            ;
 ; Top-level Entity Name ; Colour                                ;
 ; Family                ; Cyclone III                           ;
@@ -88,24 +88,24 @@ applicable agreement for further details.
 +--------+------------------------+--------------+
 
 
-+------------------------------------------------------------------------+
-; Assembler Generated Files                                              ;
-+------------------------------------------------------------------------+
-; File Name                                                              ;
-+------------------------------------------------------------------------+
-; C:/Users/user/Desktop/305/cs305_flappybird/output_files/FlappyBird.sof ;
-+------------------------------------------------------------------------+
++--------------------------------------------------------+
+; Assembler Generated Files                              ;
++--------------------------------------------------------+
+; File Name                                              ;
++--------------------------------------------------------+
+; D:/monday/cs305_flappybird/output_files/FlappyBird.sof ;
++--------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/user/Desktop/305/cs305_flappybird/output_files/FlappyBird.sof ;
-+----------------+---------------------------------------------------------------------------------+
-; Option         ; Setting                                                                         ;
-+----------------+---------------------------------------------------------------------------------+
-; Device         ; EP3C16F484C6                                                                    ;
-; JTAG usercode  ; 0x0015C685                                                                      ;
-; Checksum       ; 0x0015C685                                                                      ;
-+----------------+---------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------+
+; Assembler Device Options: D:/monday/cs305_flappybird/output_files/FlappyBird.sof ;
++----------------+-----------------------------------------------------------------+
+; Option         ; Setting                                                         ;
++----------------+-----------------------------------------------------------------+
+; Device         ; EP3C16F484C6                                                    ;
+; JTAG usercode  ; 0x004F8635                                                      ;
+; Checksum       ; 0x004F8635                                                      ;
++----------------+-----------------------------------------------------------------+
 
 
 +--------------------+
@@ -113,15 +113,15 @@ applicable agreement for further details.
 +--------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
-    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Sun May 26 19:41:26 2019
+    Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
+    Info: Processing started: Mon May 27 18:11:14 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off FlappyBird -c FlappyBird
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4541 megabytes
-    Info: Processing ended: Sun May 26 19:41:27 2019
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 500 megabytes
+    Info: Processing ended: Mon May 27 18:11:16 2019
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 

@@ -1,6 +1,6 @@
 EDA Netlist Writer report for FlappyBird
-Sun May 26 19:41:32 2019
-Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+Mon May 27 18:11:23 2019
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
 ---------------------
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Sun May 26 19:41:32 2019 ;
+; EDA Netlist Writer Status ; Successful - Mon May 27 18:11:23 2019 ;
 ; Revision Name             ; FlappyBird                            ;
 ; Top-level Entity Name     ; Colour                                ;
 ; Family                    ; Cyclone III                           ;
@@ -66,20 +66,20 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                         ;
-+----------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                    ;
-+----------------------------------------------------------------------------------------------------+
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_85c_slow.vo     ;
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_0c_slow.vo      ;
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird_min_1200mv_0c_fast.vo    ;
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird.vo                       ;
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_85c_v_slow.sdo  ;
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_0c_v_slow.sdo   ;
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird_min_1200mv_0c_v_fast.sdo ;
-; C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/FlappyBird_v.sdo                    ;
-+----------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                         ;
++------------------------------------------------------------------------------------+
+; Generated Files                                                                    ;
++------------------------------------------------------------------------------------+
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_85c_slow.vo     ;
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_0c_slow.vo      ;
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird_min_1200mv_0c_fast.vo    ;
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird.vo                       ;
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_85c_v_slow.sdo  ;
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird_6_1200mv_0c_v_slow.sdo   ;
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird_min_1200mv_0c_v_fast.sdo ;
+; D:/monday/cs305_flappybird/simulation/modelsim/FlappyBird_v.sdo                    ;
++------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -87,21 +87,21 @@ applicable agreement for further details.
 +-----------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
-    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Sun May 26 19:41:31 2019
+    Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
+    Info: Processing started: Mon May 27 18:11:20 2019
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off FlappyBird -c FlappyBird
-Info (204019): Generated file FlappyBird_6_1200mv_85c_slow.vo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file FlappyBird_6_1200mv_0c_slow.vo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file FlappyBird_min_1200mv_0c_fast.vo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file FlappyBird.vo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file FlappyBird_6_1200mv_85c_v_slow.sdo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file FlappyBird_6_1200mv_0c_v_slow.sdo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file FlappyBird_min_1200mv_0c_v_fast.sdo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file FlappyBird_v.sdo in folder "C:/Users/user/Desktop/305/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird_6_1200mv_85c_slow.vo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird_6_1200mv_0c_slow.vo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird_min_1200mv_0c_fast.vo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird.vo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird_6_1200mv_85c_v_slow.sdo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird_6_1200mv_0c_v_slow.sdo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird_min_1200mv_0c_v_fast.sdo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file FlappyBird_v.sdo in folder "D:/monday/cs305_flappybird/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4545 megabytes
-    Info: Processing ended: Sun May 26 19:41:32 2019
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 492 megabytes
+    Info: Processing ended: Mon May 27 18:11:23 2019
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
 
 

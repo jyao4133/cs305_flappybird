@@ -5,7 +5,9 @@ use ieee.std_logic_unsigned.all;
 entity health_counter is
 	port (clk, collision_on: in std_logic;
 			health : out std_logic_vector(3 downto 0);
-			game_over : out std_logic);
+			game_over : out std_logic;
+			reset_game: in std_logic
+			);
 end health_counter;
 
 Architecture health of health_counter is
@@ -18,7 +20,12 @@ Architecture health of health_counter is
 		variable no_health : std_logic;
 
 		begin
+		
 		if (rising_edge(clk)) then
+				if(reset_game='1')then 
+					initial_health:="0101";
+					no_health := '0';
+			end if;
 				--2^19 counter
 				if(collision_on = '1' AND delay > "11111100001111100000110") then
 					delay := "00000000000000000000000";

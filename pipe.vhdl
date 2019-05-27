@@ -17,7 +17,8 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 		  Signal Pipe_y : Out  std_logic_vector(10 DOWNTO 0);
 		  Signal Pipe_x : Out  std_logic_vector(10 DOWNTO 0);
 		  Signal Pipe_xsize, Pipe_ysize : out std_logic_vector(10 DOWNTO 0);
-		  signal state_num : in std_logic_vector(2 downto 0));
+		  signal state_num : in std_logic_vector(2 downto 0);
+		  signal score_tens : in std_logic_vector (9 downto 0));
 END pipe;
 
 architecture behavior of pipe is
@@ -83,9 +84,17 @@ BEGIN
 		if (switch ='1') then
 			if (('0' & Pipe_x_pos) >=  Size)THEN
 					
-					X_Motion <= -CONV_STD_LOGIC_VECTOR(2,11);
 					
+					if (score_tens = "0000000001") then
+						X_Motion <= -CONV_STD_LOGIC_VECTOR(4,11);
+				
+					elsif (score_tens >= "0000000010") then
+						X_Motion <= -CONV_STD_LOGIC_VECTOR(6,11);
 					
+					else
+						X_Motion <= -CONV_STD_LOGIC_VECTOR(2,11);
+					
+					end if;
 					
 					if(state_num = "011") then
 						Pipe_X_pos <= Pipe_X_Pos + X_Motion;

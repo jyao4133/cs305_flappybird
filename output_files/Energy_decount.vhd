@@ -8,7 +8,9 @@ entity Energy_decount is
 			game_over_energy : out std_logic;
 			energy_reset : in std_logic;
 			state_num : in std_logic_vector(2 downto 0);
-			energy_x : in std_logic_vector(10 downto 0));
+			energy_x : in std_logic_vector(10 downto 0);
+			reset_game: in std_logic
+			);
 end Energy_decount;
 
 Architecture energy of Energy_decount is
@@ -20,7 +22,13 @@ Architecture energy of Energy_decount is
 		variable initial_energy : std_logic_vector (6 downto 0):= "0100101";
 
 		begin
+		 
 		if (rising_edge(clk)) then
+				if (reset_game='1') then
+					initial_energy:= "0100101";
+					game_over_energy <= '0';
+
+				end if;
 				--2^19 counter
 				if(delay > "11111111100001111100000110" AND state_num = "011") then
 					delay := "00000000000000000000000000";

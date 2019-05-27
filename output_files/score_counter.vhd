@@ -7,7 +7,9 @@ entity score_counter is
 	pipe_x, bird_x : in std_logic_vector(10 downto 0);
 			score_ones,score_tens,score_hundreds : out std_logic_vector(9 downto 0);
 			increment_score, pipe_collision: in std_logic;
-			pickup_x : in std_logic_vector(10 downto 0));
+			pickup_x : in std_logic_vector(10 downto 0);
+			reset_game: in std_logic
+			);
 end score_counter;
 
 Architecture score of score_counter is
@@ -21,8 +23,14 @@ Architecture score of score_counter is
 		variable delay : std_logic_vector(18 downto 0):="0000000000000000000";
 		variable collision_delay : std_logic_vector(25 downto 0):="00000000000000000000000000";
 		begin
-		if (rising_edge(clk)) then
+		--RESET SCORE
 		
+		if (rising_edge(clk)) then
+				if(reset_game='1')then 
+					count_ones		:="0000000000";
+					count_tens		:="0000000000";
+					count_hundreds :="0000000000";
+				end if;
 				if(pipe_x = bird_x AND delay > "1100001111100000110") then
 					delay := "0000000000000000000";
 					if (pipe_collision = '1') then

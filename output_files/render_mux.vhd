@@ -20,7 +20,10 @@ entity render_mux is
 			pickup_pts_on									: in std_logic;
 			pickup_pts_collide								: out std_logic;
 			score_pickup_x, energy_pickup_x     : in std_logic_vector (10 downto 0);
-			score_pickup_y, energy_pickup_y     : in std_logic_vector (10 downto 0)
+			score_pickup_y, energy_pickup_y     : in std_logic_vector (10 downto 0);
+			rgb_background : in std_logic_vector(11 downto 0);
+			start_on : in std_logic;
+			start_rgb : in std_logic_vector(3 downto 0)
 			);
 end render_mux;
 
@@ -29,15 +32,29 @@ signal Collision : std_logic:= '0' ;
 
 	begin	
 		
-		process(r_ball,g_ball,b_ball,r_text,g_text,b_text,ball_on,text_on,r_pipe,g_pipe,b_pipe,pipe_on, state_num, energy_pickup_x)
+		process(r_ball,g_ball,b_ball,r_text,g_text,b_text,ball_on,text_on,r_pipe,g_pipe,b_pipe,pipe_on, state_num, energy_pickup_x,start_rgb)
 		begin
-		if (state_num = "001") then
+		 case State_num is 
+			 when "001"=>
+--				r<="0000";
+--				g<="0000";
+--				b<="0000";
+				if (start_on = '1') then
+					r<=start_rgb;
+					g<=start_rgb;
+					b<=start_rgb;
+					
+				else
 					r<="0000";
 					g<="0000";
-					b<="1111";
-		elsif (state_num = "011") then
-		
-			if (ball_on /= '0') then
+					b<="0000";
+				end if;
+			 when "010"=>
+				r<="0000";
+					g<="1111";
+					b<="0000";
+			 when "011"=>
+				if (ball_on /= '0') then
 				r<=r_ball;
 				g<=g_ball;
 				b<=b_ball;
@@ -68,6 +85,7 @@ signal Collision : std_logic:= '0' ;
 						pickup_pts_collide<='0';
 
 					end if;
+					
 			
 			elsif (text_on /= '0') then
 				r<=r_text;
@@ -94,23 +112,30 @@ signal Collision : std_logic:= '0' ;
 					
 				
 			else 
-					r<="1111";
-					g<="1111";
-					b<="1111";
+					r<= rgb_background(11 downto 8);
+					g<=rgb_background(7 downto 4);
+					b<=rgb_background(3 downto 0);
 
 			end if;
-		
-		elsif (state_num = "010") then
-					r<="0000";
-					g<="1111";
-					b<="0000";
+			 when "100"=>
+				if (start_on = '1') then
+					r<=start_rgb;
+					g<=start_rgb;
+					b<=start_rgb;
 					
-		elsif (state_num = "100") then
-		
-					r<="1111";
+				else
+					r<="0000";
 					g<="0000";
-					b<="1111";
-		end if;
+					b<="0000";
+				end if;
+					
+			 when others=>
+			 
+				r <= "0000";
+				g <= "0000";
+				b <= "0000";
+		 end case;
+		
 		
 		
 		
