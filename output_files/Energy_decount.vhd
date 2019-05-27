@@ -18,7 +18,7 @@ Architecture energy of Energy_decount is
 		
 		process(clk)
 
-		variable delay : std_logic_vector(25 downto 0):="00000000000000000000000000";
+		variable delay : std_logic_vector(27 downto 0):="0000000000000000000000000000";
 		variable initial_energy : std_logic_vector (6 downto 0):= "0100101";
 
 		begin
@@ -30,8 +30,8 @@ Architecture energy of Energy_decount is
 
 				end if;
 				--2^19 counter
-				if(delay > "11111111100001111100000110" AND state_num = "011") then
-					delay := "00000000000000000000000000";
+				if(delay > "1111111111100001111100000110" AND state_num = "011") then
+					delay := "0000000000000000000000000000";
 					initial_energy := initial_energy - "0000001";
 					
 					if (initial_energy = "0011110") then

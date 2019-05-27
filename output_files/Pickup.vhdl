@@ -20,7 +20,8 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 		  Signal ball_on : in std_logic;
 		  Signal r_ball, g_ball : in std_logic_vector(3 downto 0);
 		  signal game_state : in std_logic_vector(2 downto 0);
-		  Signal flag_out : out std_logic
+		  Signal flag_out : out std_logic;
+		  signal reset_all : in std_logic
 		  );
 
 END Pickup;
@@ -32,7 +33,7 @@ architecture behavior of Pickup is
 	--gravity motion is just the left motion for now
 	SIGNAL Pipe_X_motion,Left_Click_Motion,X_Motion 	: std_logic_vector(10 DOWNTO 0);
 	SIGNAL Pickup_Y_pos											: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(150,11);
-	SIGNAL Pickup_X_pos											: std_logic_vector(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(450,11);
+	SIGNAL Pickup_X_pos											: std_logic_vector(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(550,11);
 	SIGNAL u_Ypos, u_Yspeed 									: unsigned(10 DOWNTO 0);
 	Signal bottom_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(460,11);
 	--hardcoded size in there which is 8
@@ -92,6 +93,8 @@ BEGIN
 		if( pickup_collision = '1' and pixel_column < "00101010100" and pixel_column > "00100101100") then
 			pickup_enable<='0';
 			pickup_on<='0';
+		else
+			pickup_on <= '1';
 		end if;
 				
 
@@ -109,14 +112,22 @@ BEGIN
 			if (('0' & Pickup_X_pos) >=  Size)THEN
 					X_Motion <= -CONV_STD_LOGIC_VECTOR(2,11);
 					
-					if (game_state = "011") then
-					
+					if (game_state = "011" or game_state = "101") then
+						
+						if (pickup_on = '0' ) then
+							Pickup_X_pos <= "01111111111";
+
+
+
+						end if;
 						Pickup_X_pos <= Pickup_X_pos + X_Motion;
+	
 						
 					else
 						
 						Pickup_X_pos <= Pickup_X_pos;
 					end if;
+
 					
 			else	
 					Pickup_X_pos <= "01111111000";
@@ -128,6 +139,13 @@ BEGIN
 					pickup_Y_pos(1) <=  '1';
 
 			END IF;
+		
+							
+			if (reset_all = '1') then
+				pickup_x_pos <= "01111111000";
+				pickup_Y_pos <= CONV_STD_LOGIC_VECTOR(150,11);
+			end if;
+
 
 END process Move_Pickup;
 pickup_x<=pickup_X_Pos;

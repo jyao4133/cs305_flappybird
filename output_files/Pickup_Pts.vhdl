@@ -20,7 +20,8 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 		  Signal ball_on : in std_logic;
 		  Signal r_ball, g_ball : in std_logic_vector(3 downto 0);
 		  signal game_state : in std_logic_vector(2 downto 0);
-		  Signal flag_out : out std_logic
+		  Signal flag_out : out std_logic;
+		  signal reset_all : in std_logic
 		  );
 
 END Pickup_Pts;
@@ -105,7 +106,7 @@ BEGIN
 			if (('0' & Pickup_X_pos) >=  Size)THEN
 					X_Motion <= -CONV_STD_LOGIC_VECTOR(2,11);
 					
-					if (game_state = "011") then
+					if (game_state = "011" or game_state = "101") then
 					
 						Pickup_X_pos <= Pickup_X_pos + X_Motion;
 						
@@ -126,6 +127,12 @@ BEGIN
 					pickup_Y_pos(1) <=  '1';
 
 			END IF;
+							
+			if (reset_all = '1') then
+				pickup_x_pos <=  CONV_STD_LOGIC_VECTOR(350,11);
+				pickup_Y_pos <= CONV_STD_LOGIC_VECTOR(200,11);
+			end if;
+
 
 END process Move_Pickup;
 pickup_x<=pickup_X_Pos;

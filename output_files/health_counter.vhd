@@ -6,7 +6,8 @@ entity health_counter is
 	port (clk, collision_on: in std_logic;
 			health : out std_logic_vector(3 downto 0);
 			game_over : out std_logic;
-			reset_game: in std_logic
+			reset_game: in std_logic;
+			state_num : in std_logic_vector(2 downto 0)
 			);
 end health_counter;
 
@@ -15,7 +16,7 @@ Architecture health of health_counter is
 		
 		process(collision_on,clk)
 
-		variable delay : std_logic_vector(22 downto 0):="00000000000000000000000";
+		variable delays : std_logic_vector(22 downto 0):="00000000000000000000000";
 		variable initial_health : std_logic_vector (3 downto 0):= "0101";
 		variable no_health : std_logic;
 
@@ -25,10 +26,12 @@ Architecture health of health_counter is
 				if(reset_game='1')then 
 					initial_health:="0101";
 					no_health := '0';
+					delays := "00000000000000000000000";
+
 			end if;
 				--2^19 counter
-				if(collision_on = '1' AND delay > "11111100001111100000110") then
-					delay := "00000000000000000000000";
+				if(collision_on = '1' AND delays > "11111100001111100000110" AND state_num = "011") then
+					delays := "00000000000000000000000";
 					initial_health := initial_health - "0001";
 					
 					if (initial_health = "0000") then
@@ -42,10 +45,10 @@ Architecture health of health_counter is
 					
 				
 				else 
-					if (delay < "11111100001111100000000") then
-						delay := delay + 1;
+					if (delays < "11111100001111100000000") then
+						delays := delays + 1;
 					else
-						delay := "11111111001111111111111";
+						delays := "11111111001111111111111";
 					end if;
 
 				end if;	

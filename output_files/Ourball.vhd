@@ -81,7 +81,7 @@ BEGIN
 					--minusing size twice to make sure all of the ball stays in screen
 					if (('0' & Ball_Y_pos) <=  (CONV_STD_LOGIC_VECTOR(480,11) - Size - Size)) THEN
 					
-						if (state_num = "011") then
+						if (state_num = "011" or state_num = "101") then
 							Gravity_Motion <= CONV_STD_LOGIC_VECTOR(4,11);
 						else
 							Gravity_Motion <= CONV_STD_LOGIC_VECTOR(0,11);
@@ -100,7 +100,7 @@ BEGIN
 					spawn_flag <= '0';
 			END IF;
 			--Update y pos of ball
-			if (death = '1') then
+			if (death = '1' or state_num = "001") then
 				ball_Y_pos <= CONV_STD_LOGIC_VECTOR(40,11);
 			else
 				Ball_Y_pos <= Ball_Y_pos +Gravity_Motion+Left_Click_Motion;

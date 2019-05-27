@@ -50,11 +50,109 @@ signal Collision : std_logic:= '0' ;
 					b<="0000";
 				end if;
 			 when "010"=>
-				r<="0000";
-					g<="1111";
+				if (start_on = '1') then
+					r<=start_rgb;
+					g<=start_rgb;
+					b<=start_rgb;
+					
+				else
+					r<="0000";
+					g<="0000";
 					b<="0000";
+				end if;
 			 when "011"=>
 				if (ball_on /= '0') then
+				r<=r_ball;
+				g<=g_ball;
+				b<=b_ball;
+				pickup_collide<='0';
+					if (pipe_on /='0' and ball_on /='0') then --black if both are on
+						r<="0000";
+						g<="0000";
+						b<="1111";
+						colliding <= '1';
+					elsif(pickup_on /= '0' )then --ball pickup becomes white
+						r<="1111";
+						g<="1111";
+						b <= "0000";
+--						if(energy_pickup_x <= "00101001010" and energy_pickup_x >= "00100110110") then
+							pickup_collide<='1';
+--						else
+--							pickup_collide <= '0';
+--						end if;
+--					
+					elsif(pickup_pts_on /= '0' )then --ball pickup becomes white
+						r<="1111";
+						g<="1111";
+						b <= "0000";
+						pickup_pts_collide<='1';
+						
+					else 
+						pickup_collide <= '0';
+						pickup_pts_collide<='0';
+
+					end if;
+					
+			
+			elsif (text_on /= '0' ) then
+			
+				r<=r_text;
+				g<=g_text;
+				b<=b_text;
+				if(r_text = "000") then
+					r<= rgb_background(11 downto 8);
+					
+					
+		
+				end if;
+				if (g_text= "000") then
+					g<=rgb_background(7 downto 4);
+				end if;
+				if(b_text="000") then
+					b<=rgb_background(3 downto 0);
+				end if;	
+				
+			elsif (pipe_on /= '0') then
+				r<=r_pipe;
+				g<=g_pipe;
+				b<=b_pipe;
+			elsif (energy_on /= '0') then
+				r <= r_energy;
+				g <= g_energy;
+				b <= b_energy;
+			elsif (pickup_on /= '0' ) then
+				
+				r <= "0000";
+				g <= "0000";
+				b <= b_pickup;
+			elsif (pickup_pts_on /= '0' ) then
+				
+				r <= "0000";
+				g <= "0000";
+				b <= "0000";
+					
+				
+			else 
+					r<= rgb_background(11 downto 8);
+					g<=rgb_background(7 downto 4);
+					b<=rgb_background(3 downto 0);
+
+			end if;
+			 when "100"=>
+				if (start_on = '1') then
+					r<=start_rgb;
+					g<=start_rgb;
+					b<=start_rgb;
+					
+				else
+					r<="0000";
+					g<="0000";
+					b<="0000";
+				end if;
+					
+					
+			 when "101" =>
+			 if (ball_on /= '0') then
 				r<=r_ball;
 				g<=g_ball;
 				b<=b_ball;
@@ -117,18 +215,6 @@ signal Collision : std_logic:= '0' ;
 					b<=rgb_background(3 downto 0);
 
 			end if;
-			 when "100"=>
-				if (start_on = '1') then
-					r<=start_rgb;
-					g<=start_rgb;
-					b<=start_rgb;
-					
-				else
-					r<="0000";
-					g<="0000";
-					b<="0000";
-				end if;
-					
 			 when others=>
 			 
 				r <= "0000";

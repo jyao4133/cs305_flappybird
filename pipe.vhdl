@@ -18,7 +18,8 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 		  Signal Pipe_x : Out  std_logic_vector(10 DOWNTO 0);
 		  Signal Pipe_xsize, Pipe_ysize : out std_logic_vector(10 DOWNTO 0);
 		  signal state_num : in std_logic_vector(2 downto 0);
-		  signal score_tens : in std_logic_vector (9 downto 0));
+		  signal score_tens : in std_logic_vector (9 downto 0);
+		  signal reset_all : in std_logic);
 END pipe;
 
 architecture behavior of pipe is
@@ -28,7 +29,7 @@ architecture behavior of pipe is
 	--gravity motion is just the left motion for now
 	SIGNAL Pipe_X_motion,Left_Click_Motion,X_Motion 	: std_logic_vector(10 DOWNTO 0);
 	SIGNAL Pipe_Y_pos												: std_logic_vector(10 DOWNTO 0):=CONV_STD_LOGIC_VECTOR(0,11);
-	SIGNAL Pipe_X_pos												: std_logic_vector(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(0,11);
+	SIGNAL Pipe_X_pos												: std_logic_vector(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(460,11);
 	SIGNAL u_Ypos, u_Yspeed 									: unsigned(10 DOWNTO 0);
 	Signal bottom_boundary										: std_logic_vector(10 downto 0):=CONV_STD_LOGIC_VECTOR(600,11);
 	--hardcoded size in there which is 8
@@ -96,7 +97,7 @@ BEGIN
 					
 					end if;
 					
-					if(state_num = "011") then
+					if(state_num = "011" or state_num = "101") then
 						Pipe_X_pos <= Pipe_X_Pos + X_Motion;
 					else 
 						Pipe_X_pos <= Pipe_X_Pos;
@@ -104,7 +105,8 @@ BEGIN
 					end if;
 					
 					bottom_boundary <= top_boundary + CONV_STD_LOGIC_VECTOR(100,  11);
-
+					
+					
 
 			else	
 			
@@ -122,7 +124,12 @@ BEGIN
 					end if;
 			END IF;
 		end if;
+		
+		if (reset_all = '1') then
+			Pipe_X_pos <= CONV_STD_LOGIC_VECTOR(460,11);
+		end if;
 
+		
 END process Move_Pipe;
 --
 Pipe_x<=Pipe_X_Pos;

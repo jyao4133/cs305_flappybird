@@ -94,6 +94,13 @@ applicable agreement for further details.
 		(line (pt 0 176)(pt 16 176)(line_width 3))
 	)
 	(port
+		(pt 0 192)
+		(input)
+		(text "reset_all" (rect 0 0 33 12)(font "Arial" ))
+		(text "reset_all" (rect 21 187 54 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 1))
+	)
+	(port
 		(pt 248 32)
 		(output)
 		(text "r_pickup[3..0]" (rect 0 0 54 12)(font "Arial" ))

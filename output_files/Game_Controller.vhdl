@@ -9,7 +9,9 @@ entity Game_Controller is
 		clk,mouse_click,sw_0,player_dead: in std_logic;
 		state_num :out std_logic_vector(2 downto 0);
 		right_click : in std_logic;
-		reset_game : out std_logic
+		reset_game : out std_logic;
+		switch_1 : in std_logic
+		
 		);
 end entity;
 
@@ -40,8 +42,8 @@ architecture rtl of Game_Controller is
 							
 							if(mouse_click='1') then
 								next_state <= s_play;
---							elsif (right_click='1') then
---								next_state <= s_training;
+							elsif (right_click='1') then
+								next_state <= s_training;
 							else
 								next_state <= s_start;
 							end if;
@@ -57,7 +59,7 @@ architecture rtl of Game_Controller is
 							
 						when s_gameover =>
 							reset_game <= '0';
-							if(right_click='1') then
+							if(switch_1='1') then
 								next_state <= s_start;
 								
 							else
@@ -71,12 +73,15 @@ architecture rtl of Game_Controller is
 							else
 								next_state <= s_pause;
 							end if;
---						when s_training =>
---							if(right_click='1')then	
---								next_state<= s_start;
---							else	
---								next_state<= s_training;
---							end if;	
+						when s_training =>
+						
+							reset_game <= '0';
+
+							if(switch_1='1')then	
+								next_state<= s_start;
+							else	
+								next_state<= s_training;
+							end if;	
 						
 						when others =>
 						

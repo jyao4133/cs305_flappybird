@@ -300,17 +300,17 @@ begin
 
 
 		elsif (pixel_rows >= (size * 20) and pixel_rows < (size * 22)) and pixel_cols >= (size * 2) and pixel_cols < (size *34) then
-			--RIGHT
+			--BUT1
 			if ( pixel_cols >= (size * 2) and pixel_cols < (size *4) ) then
-				character_add <= "010010";
+				character_add <= "000010";
 			elsif	( pixel_cols >= (size * 4) and pixel_cols < (size *6) ) then
-				character_add <= "001001";
+				character_add <= "010101";
 			elsif( pixel_cols >= (size * 6) and pixel_cols < (size *8)) then
-				character_add <= "000111";			 
+				character_add <= "010100";			 
 			elsif ( pixel_cols >= (size * 8) and pixel_cols < (size *10) ) then
-				character_add <= "001000";
+				character_add <= "010100";
 			elsif	( pixel_cols >= (size * 10) and pixel_cols < (size *12) ) then
-				character_add <= "010100";	
+				character_add <= "110001";	
 		
 			--space
 			elsif( pixel_cols >= (size * 12) and pixel_cols < (size *14)) then
@@ -330,7 +330,7 @@ begin
 			elsif ( pixel_cols >= (size * 24) and pixel_cols < (size *26)) then
 				character_add <= "011111";
 				
-			--TRAIN
+			--MENU
 			elsif ( pixel_cols >= (size * 26) and pixel_cols < (size *28)) then
 				character_add <= "001101";			 
 			elsif ( pixel_cols >= (size * 28) and pixel_cols < (size *30)) then
@@ -345,6 +345,26 @@ begin
 		else
 			text_on<='0';
 		end if;
+		
+	elsif (state_num = "010") then
+		if (pixel_rows >= (size * 10) and pixel_rows < (size * 12)) and pixel_cols >= (size * 10) and pixel_cols < (size *20) then
+
+			if ( pixel_cols >= (size * 10) and pixel_cols < (size *12) ) then
+				character_add <= "010000";
+			elsif	( pixel_cols >= (size * 12) and pixel_cols < (size *14) ) then
+				character_add <= "000001";
+			elsif( pixel_cols >= (size * 14) and pixel_cols < (size *16)) then
+				character_add <= "010101";
+			elsif ( pixel_cols >= (size * 16) and pixel_cols < (size *18)) then
+				character_add <= "010011";
+			elsif ( pixel_cols >= (size * 18) and pixel_cols < (size *10)) then
+				character_add <= "000101";
+			end if;
+			text_on <= '1';
+		else
+			text_on <= '0';
+		end if;
+
 	end if;
 	
 	end process;
