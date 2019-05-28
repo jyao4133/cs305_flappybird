@@ -26,7 +26,7 @@ begin
 	current_energy <= unsigned (newEnergy);
 	
 
-	RGB_Display_Energy: Process ( pixel_column, pixel_row)
+	RGB_Display_Energy: Process ( pixel_column, pixel_row,pixel_rows,pixel_cols)
 	BEGIN
 		if (pixel_rows >= (size * 0) and pixel_rows < (size * 1)) and pixel_cols >= (size * 30) and pixel_cols < (size *current_energy) then
 		

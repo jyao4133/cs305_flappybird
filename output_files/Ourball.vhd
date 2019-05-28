@@ -18,7 +18,9 @@ Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
         SIGNAL Horiz_sync,Vert_sync		: OUT std_logic;
 		  Signal ball_X,ball_Y, ball_size : Out  std_logic_vector(10 DOWNTO 0);
 		  signal death_flag : out std_logic;
-		  signal state_num : in std_logic_vector (2 downto 0));
+		  signal state_num : in std_logic_vector (2 downto 0);
+		  signal character_add : out std_logic_vector(5 downto 0)
+		  );
 END ourball;
 
 architecture behavior of ourball is
@@ -111,5 +113,6 @@ BEGIN
 	ball_X<=ball_X_pos;
 	ball_Y<= ball_Y_pos;
 	ball_size <= size;
+	character_add<="000000";
 END behavior;
 

@@ -29,7 +29,7 @@ begin
 	pixel_cols <= unsigned (pixel_column);
 	unsigned_health <= unsigned (health);
 
-	RGB_Display_Text: Process ( pixel_column, pixel_row)
+	RGB_Display_Text: Process ( pixel_column, pixel_row,pixel_cols,pixel_rows,score_hundreds,score_tens,score_ones,state_num)
 	BEGIN
 	
 	if (state_num = "001") then

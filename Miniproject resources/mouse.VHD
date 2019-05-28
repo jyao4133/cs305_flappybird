@@ -50,7 +50,7 @@ mouse_cursor_column <= cursor_column;
 MOUSE_DATA <= 'Z' WHEN MOUSE_DATA_DIR = '0' ELSE MOUSE_DATA_BUF;
 MOUSE_CLK <=  'Z' WHEN MOUSE_CLK_DIR = '0' ELSE MOUSE_CLK_BUF;
 			-- state machine to send init command and start recv process.
-	PROCESS (reset, clock_25Mhz)
+	PROCESS (reset, clock_25Mhz,CHAROUT)
 	BEGIN
 		IF reset = '1' THEN
 			mouse_state <= INHIBIT_TRANS;

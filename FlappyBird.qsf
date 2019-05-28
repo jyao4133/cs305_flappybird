@@ -123,10 +123,6 @@ set_global_assignment -name VHDL_FILE "Miniproject resources/char_rom.vhd"
 set_global_assignment -name VHDL_FILE "Miniproject resources/ball.vhd"
 set_global_assignment -name QIP_FILE Clock_Divider.qip
 set_global_assignment -name BDF_FILE FlappyBird.bdf
-set_global_assignment -name CDF_FILE output_files/Chain7.cdf
-set_global_assignment -name CDF_FILE output_files/Chain8.cdf
-set_global_assignment -name CDF_FILE output_files/Chain9.cdf
-set_global_assignment -name CDF_FILE output_files/Chain10.cdf
 set_global_assignment -name VHDL_FILE output_files/Text.vhdl
 set_global_assignment -name VHDL_FILE output_files/Ourball.vhd
 set_global_assignment -name VHDL_FILE output_files/render_mux.vhd
@@ -134,19 +130,6 @@ set_global_assignment -name VHDL_FILE output_files/binary_to_bcd.vhd
 set_global_assignment -name VHDL_FILE output_files/BCD_7SegDisplay.vhd
 set_global_assignment -name BDF_FILE output_files/test.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform.vwf
-set_global_assignment -name CDF_FILE output_files/Chain3.cdf
-set_global_assignment -name CDF_FILE output_files/Chain4.cdf
-set_global_assignment -name CDF_FILE output_files/Chain5.cdf
-set_global_assignment -name CDF_FILE output_files/Chain6.cdf
-set_global_assignment -name CDF_FILE output_files/Chain11.cdf
-set_global_assignment -name CDF_FILE output_files/Chain12.cdf
-set_global_assignment -name CDF_FILE output_files/Chain14.cdf
-set_global_assignment -name CDF_FILE output_files/Chain16.cdf
-set_global_assignment -name CDF_FILE output_files/Chain17.cdf
-set_global_assignment -name CDF_FILE output_files/Chain18.cdf
-set_global_assignment -name CDF_FILE output_files/Chain20.cdf
-set_global_assignment -name CDF_FILE output_files/Chain24.cdf
-set_global_assignment -name CDF_FILE output_files/Chain27.cdf
 set_global_assignment -name VHDL_FILE pipe.vhdl
 set_global_assignment -name VHDL_FILE output_files/LFSR.vhdl
 set_global_assignment -name VHDL_FILE output_files/collision_mux.vhd
@@ -162,9 +145,9 @@ set_global_assignment -name VHDL_FILE output_files/pickup_timer.vhd
 set_global_assignment -name VHDL_FILE output_files/Pickup_Pts.vhdl
 set_global_assignment -name QIP_FILE background_game.qip
 set_global_assignment -name VHDL_FILE background.vhdl
-set_global_assignment -name CDF_FILE output_files/Chain28.cdf
 set_global_assignment -name VHDL_FILE output_files/Text_Start.vhdl
-set_global_assignment -name CDF_FILE output_files/output_files/output_files/Chain21.cdf
-set_global_assignment -name CDF_FILE output_files/output_files/output_files/Chain29.cdf
 set_global_assignment -name VHDL_FILE output_files/button_debounce.vhd
+set_global_assignment -name VHDL_FILE pipe_2.vhdl
+set_global_assignment -name TIMEQUEST_DO_REPORT_TIMING ON
+set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

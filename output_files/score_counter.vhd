@@ -84,14 +84,15 @@ entity score_counter is
 			score_ones,score_tens,score_hundreds : out std_logic_vector(9 downto 0);
 			increment_score, pipe_collision: in std_logic;
 			pickup_x : in std_logic_vector(10 downto 0);
-			reset_game: in std_logic
+			reset_game: in std_logic;
+			pipe2_x : in std_logic_vector(10 downto 0)
 			);
 end score_counter;
 
 Architecture score of score_counter is
 	begin	
 		
-		process(pipe_x, bird_x,clk, pipe_collision)
+		process(pipe_x,pipe2_x, bird_x,clk, pipe_collision)
 		variable count_ones : std_logic_vector(9 downto 0):= "0000000000";
 		variable count_tens : std_logic_vector(9 downto 0):= "0000000000";
 		variable count_hundreds : std_logic_vector(9 downto 0):= "0000000000";
@@ -108,6 +109,8 @@ Architecture score of score_counter is
 					count_hundreds :="0000000000";
 				end if;
 				if (pipe_x = bird_x) then
+					delay := '1';
+				elsif (pipe2_x = bird_x) then
 					delay := '1';
 				elsif(delay = '1' ) then
 						count_ones := count_ones + 1;
@@ -135,7 +138,7 @@ Architecture score of score_counter is
 							count_hundreds := count_hundreds +1;
 						end if;
 					end if;
-					
+				
 				end if;
 				
 		end if;

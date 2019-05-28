@@ -29,7 +29,7 @@ begin
 	pixel_cols <= unsigned (pixel_column);
 	unsigned_health <= unsigned (health);
 
-	RGB_Display_Text: Process ( pixel_column, pixel_row)
+	RGB_Display_Text: Process ( pixel_column, pixel_row,pixel_rows,pixel_cols,score_hundreds,score_tens,score_ones)
 	BEGIN
 	if (pixel_rows >= (size * 0) and pixel_rows < (size * 1)) and pixel_cols >= (size * 0) and pixel_cols < (size *8) then
 		if ( pixel_cols >= (size * 0) and pixel_cols < (size *1) ) then

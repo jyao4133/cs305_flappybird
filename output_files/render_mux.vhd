@@ -23,7 +23,9 @@ entity render_mux is
 			score_pickup_y, energy_pickup_y     : in std_logic_vector (10 downto 0);
 			rgb_background : in std_logic_vector(11 downto 0);
 			start_on : in std_logic;
-			start_rgb : in std_logic_vector(3 downto 0)
+			start_rgb : in std_logic_vector(3 downto 0);
+			r_pipe2,g_pipe2,b_pipe2						: in std_logic_vector(3 downto 0);
+			pipe2_on : std_logic
 			);
 end render_mux;
 
@@ -32,10 +34,10 @@ signal Collision : std_logic:= '0' ;
 
 	begin	
 		
-		process(r_ball,g_ball,b_ball,r_text,g_text,b_text,ball_on,text_on,r_pipe,g_pipe,b_pipe,pipe_on, state_num, energy_pickup_x,start_rgb)
+		process(r_ball,g_ball,b_ball,r_text,g_text,b_text,ball_on,text_on,r_pipe,g_pipe,b_pipe,pipe_on, state_num, energy_pickup_x,start_rgb,pipe2_on,r_pipe2,g_pipe2,b_pipe2,rgb_background,r_energy,g_energy,b_energy,start_on,pickup_pts_on,pickup_on)
 		begin
 		 case State_num is 
-			 when "001"=>
+			 when "001"=>-- 001 for when the state is "start" 
 --				r<="0000";
 --				g<="0000";
 --				b<="0000";
@@ -60,13 +62,13 @@ signal Collision : std_logic:= '0' ;
 					g<="0000";
 					b<="0000";
 				end if;
-			 when "011"=>
+			 when "011"=>-- for when the state is "play" 
 				if (ball_on /= '0') then
-				r<=r_ball;
-				g<=g_ball;
-				b<=b_ball;
-				pickup_collide<='0';
-					if (pipe_on /='0' and ball_on /='0') then --black if both are on
+					r<=r_ball;
+					g<=g_ball;
+					b<=b_ball;
+					pickup_collide<='0';
+					if ((pipe2_on /='0' or pipe_on /='0') and ball_on /='0') then --black if both are on
 						r<="0000";
 						g<="0000";
 						b<="1111";
@@ -94,50 +96,58 @@ signal Collision : std_logic:= '0' ;
 					end if;
 					
 			
-			elsif (text_on /= '0' ) then
+				elsif (text_on /= '0' ) then
+				
+					r<=r_text;
+					g<=g_text;
+					b<=b_text;
+					if(r_text = "000") then
+						r<= rgb_background(11 downto 8);
+						
+						
 			
-				r<=r_text;
-				g<=g_text;
-				b<=b_text;
-				if(r_text = "000") then
-					r<= rgb_background(11 downto 8);
+					end if;
+					if (g_text= "000") then
+						g<=rgb_background(7 downto 4);
+					end if;
+					if(b_text="000") then
+						b<=rgb_background(3 downto 0);
+					end if;	
 					
+				elsif (pipe_on /= '0') then
+					r<=r_pipe;
+					g<=g_pipe;
+					b<=b_pipe;
+				elsif (pipe2_on /= '0') then
+					r<=r_pipe2;
+					g<=g_pipe2;
+					b<=b_pipe2;
+--					r <= "0000";
+--					g <= "0000";
+--					b <= "0000";
+				
+				elsif (energy_on /= '0') then
+					r <= r_energy;
+					g <= g_energy;
+					b <= b_energy;
+				elsif (pickup_on /= '0' ) then
 					
-		
-				end if;
-				if (g_text= "000") then
-					g<=rgb_background(7 downto 4);
-				end if;
-				if(b_text="000") then
-					b<=rgb_background(3 downto 0);
-				end if;	
-				
-			elsif (pipe_on /= '0') then
-				r<=r_pipe;
-				g<=g_pipe;
-				b<=b_pipe;
-			elsif (energy_on /= '0') then
-				r <= r_energy;
-				g <= g_energy;
-				b <= b_energy;
-			elsif (pickup_on /= '0' ) then
-				
-				r <= "0000";
-				g <= "0000";
-				b <= b_pickup;
-			elsif (pickup_pts_on /= '0' ) then
-				
-				r <= "0000";
-				g <= "0000";
-				b <= "0000";
+					r <= "0000";
+					g <= "0000";
+					b <= b_pickup;
+				elsif (pickup_pts_on /= '0' ) then
 					
-				
-			else 
-					r<= rgb_background(11 downto 8);
-					g<=rgb_background(7 downto 4);
-					b<=rgb_background(3 downto 0);
+					r <= "0000";
+					g <= "0000";
+					b <= "0000";
+						
+					
+				else 
+						r<= rgb_background(11 downto 8);
+						g<=rgb_background(7 downto 4);
+						b<=rgb_background(3 downto 0);
 
-			end if;
+				end if;
 			 when "100"=>
 				if (start_on = '1') then
 					r<=start_rgb;
@@ -151,7 +161,7 @@ signal Collision : std_logic:= '0' ;
 				end if;
 					
 					
-			 when "101" =>
+			 when "101" =>-- for when the state is "pause" 
 			 if (ball_on /= '0') then
 				r<=r_ball;
 				g<=g_ball;
@@ -185,31 +195,39 @@ signal Collision : std_logic:= '0' ;
 					end if;
 					
 			
-			elsif (text_on /= '0') then
+			 elsif (text_on /= '0') then
 				r<=r_text;
 				g<=g_text;
 				b<=b_text;
-			elsif (pipe_on /= '0') then
+			 elsif (pipe_on /= '0') then
 				r<=r_pipe;
 				g<=g_pipe;
 				b<=b_pipe;
-			elsif (energy_on /= '0') then
+			 elsif (pipe2_on /= '0') then
+	--				r<=r_pipe2;
+	--				g<=g_pipe2;
+	--				b<=b_pipe2;
+					r <= "0000";
+					g <= "0000";
+					b <= "1111";
+					
+			 elsif (energy_on /= '0') then
 				r <= r_energy;
 				g <= g_energy;
 				b <= b_energy;
-			elsif (pickup_on /= '0' ) then
+			 elsif (pickup_on /= '0' ) then
 				
 				r <= "0000";
 				g <= "0000";
 				b <= b_pickup;
-			elsif (pickup_pts_on /= '0' ) then
+			 elsif (pickup_pts_on /= '0' ) then
 				
 				r <= "0000";
 				g <= "0000";
 				b <= "0000";
 					
 				
-			else 
+			 else 
 					r<= rgb_background(11 downto 8);
 					g<=rgb_background(7 downto 4);
 					b<=rgb_background(3 downto 0);
